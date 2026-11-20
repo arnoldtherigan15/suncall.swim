@@ -38,6 +38,24 @@
         ],
         "createdAt": "2026-11-20T02:49:20.126Z",
         "reason": "Claude: flagged .band (full-bleed gutter wrapper) and .stage (centres a 72%-wide SVG); both are inset by design"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "demo/index.html"
+        ],
+        "createdAt": "2026-11-20T02:50:35.535Z",
+        "reason": "Claude: generated standalone copy of demo/demo.html; same .band gutter wrapper and centred preview stage"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "demo/*.html"
+        ],
+        "createdAt": "2026-11-20T02:50:35.546Z",
+        "reason": "user confirmed: approved the proposed Sand #FBF9F4 ground (from the client's light mockup) before the Figma build"
       }
     ]
   }
