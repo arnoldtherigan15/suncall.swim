@@ -173,7 +173,7 @@ p { margin: 0; }
 .qty button:hover:not(:disabled) { background: var(--shell); }
 .qty span { min-width: 22px; text-align: center; font-variant-numeric: tabular-nums; }
 .opt { border: 1px solid var(--line-2); border-radius: 999px; background: transparent; padding: 10px 16px; font-size: 14px; display: inline-flex; gap: 8px; align-items: center; }
-.opt i { width: 14px; height: 14px; border-radius: 50%; display: inline-block; box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+.opt i { width: 14px; height: 14px; border-radius: 50%; display: inline-block; box-shadow: inset 0 0 0 1px rgba(0,0,0,.25); }
 .opt[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--sand); }
 .letters { display: grid; gap: 8px; max-width: 360px; padding-top: 8px; }
 .letters input { height: 52px; border: 1px solid var(--line-2); border-radius: 6px; background: var(--paper); padding: 0 16px; font: 500 18px var(--body); letter-spacing: 4px; text-transform: uppercase; color: var(--ink); }
@@ -613,7 +613,8 @@ footer nav a { text-decoration: none; }
     return "M" + a[0] + " " + a[1] + " L150 10 L" + b[0] + " " + b[1] + " M150 10 L143 32 M150 10 L157 34";
   }
   var GHOST = "fill='none' stroke='#B9AE9C' stroke-width='1.6' stroke-dasharray='4 4' stroke-linecap='round'";
-  function sk(c, w) { return "fill='none' stroke='" + c + "' stroke-width='" + (w || 2) + "' stroke-linecap='round' stroke-linejoin='round'"; }
+  function light(c) { if (!c || c[0] !== "#") return false; var r = parseInt(c.substr(1, 2), 16), g = parseInt(c.substr(3, 2), 16), b = parseInt(c.substr(5, 2), 16); return (.2126 * r + .7152 * g + .0722 * b) / 255 > .78; }
+  function sk(c, w) { return "fill='none' stroke='" + c + "' stroke-width='" + (w || 2) + "' stroke-linecap='round' stroke-linejoin='round'" + (light(c) ? " style='filter:drop-shadow(0 0 .7px rgba(80,70,60,.95)) drop-shadow(0 0 .3px rgba(80,70,60,.9))'" : ""); }
   function lerp(a, b, f) { return [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]; }
   function star(x, y, r, c) { var p = ""; for (var i = 0; i < 10; i++) { var rr = i % 2 ? r * .45 : r, an = -Math.PI / 2 + i * Math.PI / 5; p += (i ? "L" : "M") + (x + rr * Math.cos(an)).toFixed(1) + " " + (y + rr * Math.sin(an)).toFixed(1); } return "<path d='" + p + "Z' fill='" + c + "'/>"; }
   function heart(x, y, r, c) { return "<path d='M" + x + " " + (y + r) + " C" + (x - r * 1.6) + " " + (y - r * .2) + " " + (x - r * .6) + " " + (y - r * 1.4) + " " + x + " " + (y - r * .4) + " C" + (x + r * .6) + " " + (y - r * 1.4) + " " + (x + r * 1.6) + " " + (y - r * .2) + " " + x + " " + (y + r) + "Z' fill='" + c + "'/>"; }
