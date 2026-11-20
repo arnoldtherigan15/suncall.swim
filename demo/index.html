@@ -183,7 +183,7 @@ p { margin: 0; }
 
 .preview-col { position: sticky; top: 24px; display: grid; gap: 20px; height: calc(100vh - 48px); height: calc(100svh - 48px); max-height: 960px; grid-template-rows: minmax(0, 1fr) auto; }
 #steps { overflow-anchor: none; }
-.summary .lines { display: grid; gap: 10px; max-height: 128px; overflow: auto; padding-right: 4px; scrollbar-width: thin; scrollbar-color: var(--line-2) transparent; }
+.summary .lines { display: grid; gap: 10px; align-content: start; height: 128px; overflow: auto; padding-right: 4px; scrollbar-width: thin; scrollbar-color: var(--line-2) transparent; }
 .stage { background: var(--shell); border-radius: 6px; min-height: 0; position: relative; overflow: hidden; }
 .stage .cap { position: absolute; top: 22px; left: 0; right: 0; text-align: center; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--quiet); }
 #stage { position: absolute; inset: 48px 24px 24px; display: grid; place-items: center; }
