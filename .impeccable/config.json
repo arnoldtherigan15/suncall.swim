@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "proposal/proposal.html"
+        ],
+        "createdAt": "2026-11-20T02:30:28.161Z",
+        "reason": "Claude: detector renders the headless artifact fragment with dark tokens over a white default; the same page as a full document (proposal/index.html) has no contrast findings"
+      },
+      {
+        "rule": "shape-assembled-illustration",
+        "value": "*",
+        "files": [
+          "proposal/index.html"
+        ],
+        "createdAt": "2026-11-20T02:30:28.175Z",
+        "reason": "Claude: deliberate labelled sketch for the builder demo ('A rough sketch of the bikini builder'); real site uses product photos"
+      },
+      {
+        "rule": "shape-assembled-illustration",
+        "value": "*",
+        "files": [
+          "proposal/proposal.html"
+        ],
+        "createdAt": "2026-11-20T02:30:28.186Z",
+        "reason": "Claude: same labelled builder sketch as proposal/index.html"
+      }
+    ]
+  }
+}
