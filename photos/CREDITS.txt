@@ -1,0 +1,8 @@
+Mockup placeholder photos from Unsplash (Unsplash License). Replace with client's own product photos before launch.
+main.jpg photo-1606792109963-7b34205b1333
+lifestyle-hat.jpg photo-1592657231589-ea0567892bcb
+coverup-beach.jpg photo-1525672892528-eb2eead4effc
+sun-hat.jpg photo-1626028383771-ec16536a1af8
+turquoise-bikini.jpg photo-1760473200349-4c25a37d2a47
+user-photo.jpg photo-1786641982555-e51f441dd83a
+tryon-result.jpg photo-1525672716948-1f0bb9c49883 (same model/session as coverup-beach.jpg)

@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Suncall Swim Website Proposal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+/* Layout: one calm editorial column, sand ground, the client's own swatch row as the recurring motif. */
+:root {
+  --bg: #FBF9F4;
+  --surface: #F3EEE3;
+  --fg: #2A2621;
+  --muted: #6F665B;
+  --line: #DDD3C2;
+  --gold: #A7802F;
+  --gold-soft: #EADFC5;
+  --outline: #2A2621;
+  --display: "Cormorant", "Cormorant Garamond", Georgia, serif;
+  --body: "Jost", "Futura", "Avenir Next", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15181A; --surface: #1E2225; --fg: #EDE6D8; --muted: #A99F90;
+    --line: #343A3E; --gold: #D6B067; --gold-soft: #3A3324; --outline: #EDE6D8;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15181A; --surface: #1E2225; --fg: #EDE6D8; --muted: #A99F90;
+  --line: #343A3E; --gold: #D6B067; --gold-soft: #3A3324; --outline: #EDE6D8;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-weight: 300; font-size: 17px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px;
+}
+.wrap { max-width: 980px; margin: 0 auto; }
+.narrow { max-width: 680px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 300; color: var(--gold); text-wrap: balance; margin: 0; line-height: 1.08; }
+h1 { font-size: clamp(2.8rem, 7vw, 5rem); }
+h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
+h3 { font-size: 1.6rem; font-weight: 400; }
+p { margin: 0; }
+strong { font-weight: 500; }
+.eyebrow { font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+section { padding-block: 72px 0; display: grid; gap: 28px; }
+.lead { font-size: 1.15rem; color: var(--fg); max-width: 62ch; }
+.muted { color: var(--muted); }
+
+/* masthead */
+.mast { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 28px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.mark { font-family: var(--display); font-size: 1.5rem; letter-spacing: .04em; color: var(--fg); }
+.hero { padding-block: 64px 0; display: grid; gap: 24px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: .9rem; color: var(--muted); }
+.meta b { font-weight: 400; color: var(--fg); }
+.swatchrow { display: grid; grid-template-columns: repeat(10, 1fr); height: 10px; border-radius: 2px; overflow: hidden; margin-top: 8px; }
+.swatchrow span { display: block; }
+
+/* understanding */
+.flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.flow li { list-style: none; padding: 20px 18px 20px 0; border-bottom: 1px solid var(--line); display: grid; gap: 6px; align-content: start; }
+.flow { padding: 0; margin: 0; counter-reset: s; }
+.flow li::before { counter-increment: s; content: "Step " counter(s); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+.flow b { font-weight: 500; }
+.flow small { color: var(--muted); font-size: .9rem; }
+.pages { display: flex; flex-wrap: wrap; gap: 8px; }
+.pages span { border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; font-size: .9rem; }
+
+/* builder demo */
+.demo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; background: var(--surface); border-radius: 4px; padding: 32px; align-items: center; }
+.demo svg { width: 100%; max-width: 320px; height: auto; display: block; margin: 0 auto; }
+.ctrl { display: grid; gap: 20px; min-width: 0; }
+.ctrl fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
+.ctrl legend { font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.sw { display: flex; flex-wrap: wrap; gap: 8px; }
+.sw button { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; outline: 1px solid var(--line); background: var(--c); cursor: pointer; padding: 0; }
+.sw button[aria-pressed="true"] { border-color: var(--bg); outline: 2px solid var(--fg); }
+.seg { display: flex; flex-wrap: wrap; gap: 8px; }
+.seg button { font: inherit; font-size: .9rem; background: transparent; color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 14px; font-variant-numeric: tabular-nums; }
+.total output { font-family: var(--display); font-size: 2rem; color: var(--fg); }
+.note { font-size: .85rem; color: var(--muted); }
+.math { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.math div { border-left: 1px solid var(--gold); padding-left: 16px; display: grid; gap: 4px; }
+.math .n { font-family: var(--display); font-size: 2.4rem; line-height: 1; color: var(--fg); font-variant-numeric: tabular-nums; }
+
+/* options */
+.tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.tier { border: 1px solid var(--line); border-radius: 4px; padding: 28px 24px; display: grid; gap: 16px; grid-template-rows: auto auto auto 1fr auto; position: relative; }
+.tier.rec { border-color: var(--gold); background: var(--surface); }
+.badge { position: absolute; top: -12px; left: 24px; background: var(--gold); color: var(--bg); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; font-weight: 500; }
+.price { font-family: var(--display); font-size: 2.6rem; line-height: 1; color: var(--fg); font-variant-numeric: tabular-nums; }
+.price small { font-family: var(--body); font-size: .85rem; color: var(--muted); }
+.tier ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: .95rem; }
+.tier .fit { font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
+
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; font-variant-numeric: tabular-nums; min-width: 520px; }
+th, td { text-align: left; padding: 12px 12px 12px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 400; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+td.r, th.r { text-align: right; padding-right: 0; }
+
+/* timeline */
+.time { display: grid; gap: 0; margin: 0; padding: 0; }
+.time li { list-style: none; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.time li:first-child { border-top: 1px solid var(--line); }
+.time .wk { color: var(--gold); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; padding-top: 3px; }
+
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+.check { margin: 0; padding: 0; display: grid; gap: 10px; }
+.check li { list-style: none; padding-left: 26px; position: relative; }
+.check li::before { content: ""; position: absolute; left: 0; top: .5em; width: 12px; height: 12px; border: 1px solid var(--gold); border-radius: 2px; }
+.qs { margin: 0; padding-left: 22px; display: grid; gap: 10px; }
+.qs li::marker { color: var(--gold); }
+
+.next { background: var(--surface); border-radius: 4px; padding: 36px 32px; display: grid; gap: 16px; }
+footer { padding-top: 48px; font-size: .85rem; color: var(--muted); }
+
+@media (max-width: 820px) {
+  .tiers, .two, .demo { grid-template-columns: minmax(0, 1fr); }
+  .demo { padding: 24px 18px; }
+  .time li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  section { padding-block: 56px 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .piece { transition: fill .35s cubic-bezier(.2,.7,.2,1), stroke .35s cubic-bezier(.2,.7,.2,1); }
+}
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <span class="mark">Suncall Swim</span>
+    <span class="eyebrow">Website proposal · Draft for discussion</span>
+  </header>
+
+  <div class="hero narrow">
+    <p class="eyebrow">Prepared for Kalani</p>
+    <h1>A store where every bikini is built by the person wearing it</h1>
+    <p class="lead">Thank you for sending the mockup. This is my first read of what you need, how I would build it, and what it would cost. Prices are estimates until we talk through the details on our call.</p>
+    <div class="meta">
+      <span>Prepared by <b>Arnold</b></span>
+      <span>Date <b>20 November 2026</b></span>
+      <span>Valid for <b>30 days</b></span>
+    </div>
+    <div class="swatchrow" aria-hidden="true">
+      <span style="background:#E9C93F"></span><span style="background:#1E1C1B"></span><span style="background:#D3306F"></span><span style="background:#C8332D"></span><span style="background:#1F2D55"></span><span style="background:#1F8C8A"></span><span style="background:#2BB3D9"></span><span style="background:#7E4FA1"></span><span style="background:#8C7B6E"></span><span style="background:#5A3A2A"></span>
+    </div>
+  </div>
+
+  <section>
+    <p class="eyebrow">What I took from your mockup</p>
+    <h2>The custom flow</h2>
+    <ol class="flow">
+      <li><b>Bottoms</b><small>Pick a cut, size S to XL, then a colour</small></li>
+      <li><b>Top</b><small>Pick a cut, size and colour. Or switch to a one-piece</small></li>
+      <li><b>Tie style</b><small>Choose how the top ties: halter, criss-cross, around the neck</small></li>
+      <li><b>Hardware</b><small>Gold or silver rings, shell and pearl charms</small></li>
+      <li><b>Beads</b><small>Regular beads and letter beads for a name or word</small></li>
+      <li><b>Add to bag</b><small>The preview on the right updates at every step</small></li>
+    </ol>
+    <p class="muted">Around the builder, the mockup also has:</p>
+    <div class="pages">
+      <span>Home &amp; Designs gallery</span><span>The process</span><span>Shop</span><span>Accessories</span><span>Book a private session</span><span>Wholesale enquiry</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The heart of the site</p>
+    <h2>Try the idea</h2>
+    <p class="lead">A rough sketch of the bikini builder. In the real site the drawing is replaced by your own product photos, and every choice updates the preview and the price.</p>
+    <div class="demo">
+      <svg viewBox="0 0 300 340" role="img" aria-label="Bikini preview">
+        <g id="neck" fill="none" stroke-width="2" stroke-linecap="round"></g>
+        <g class="piece" id="top">
+          <path class="piece" d="M112 62 Q104 112 76 142 L146 142 Z"/>
+          <path class="piece" d="M188 62 Q196 112 224 142 L154 142 Z"/>
+        </g>
+        <g id="topStrings" fill="none" stroke-width="2" stroke-linecap="round">
+          <path d="M146 140 L154 140"/>
+          <path d="M76 140 L22 146 M22 146 L12 176 M22 146 L28 182"/>
+          <path d="M224 140 L278 146"/>
+        </g>
+        <path class="piece" id="bottom" d="M66 214 Q150 228 234 214 L218 246 Q172 258 162 318 L138 318 Q128 258 82 246 Z"/>
+        <g id="bottomStrings" fill="none" stroke-width="2" stroke-linecap="round">
+          <path d="M68 222 L44 262 M68 222 L58 272"/>
+          <path d="M232 222 L256 262 M232 222 L242 272"/>
+        </g>
+        <g id="rings" fill="none" stroke="#C9A24A" stroke-width="3" hidden>
+          <circle cx="150" cy="142" r="7"/>
+          <circle cx="70" cy="222" r="7"/>
+          <circle cx="230" cy="222" r="7"/>
+        </g>
+        <g id="beads" hidden>
+          <circle cx="20" cy="152" r="3.5" fill="#E9C93F"/><circle cx="17" cy="161" r="3.5" fill="#2BB3D9"/><circle cx="14" cy="170" r="3.5" fill="#D3306F"/>
+          <circle cx="51" cy="250" r="3.5" fill="#E9C93F"/><circle cx="47" cy="258" r="3.5" fill="#2BB3D9"/>
+          <circle cx="249" cy="250" r="3.5" fill="#E9C93F"/><circle cx="253" cy="258" r="3.5" fill="#2BB3D9"/>
+        </g>
+      </svg>
+      <div class="ctrl">
+        <fieldset><legend>Top colour</legend><div class="sw" id="swTop"></div></fieldset>
+        <fieldset><legend>Bottom colour</legend><div class="sw" id="swBottom"></div></fieldset>
+        <fieldset><legend>Tie style</legend>
+          <div class="seg" id="tie">
+            <button type="button" id="tie-halter" data-v="halter" aria-pressed="true">Halter</button>
+            <button type="button" id="tie-cross" data-v="cross" aria-pressed="false">Criss-cross</button>
+          </div>
+        </fieldset>
+        <fieldset><legend>Accessories</legend>
+          <div class="seg">
+            <button type="button" id="acc-rings" aria-pressed="false">Gold rings +$12</button>
+            <button type="button" id="acc-beads" aria-pressed="false">Beads +$8</button>
+          </div>
+        </fieldset>
+        <div class="total"><span id="summary" class="note">Butter top, Lagoon bottom</span><output id="price">$105</output></div>
+        <p class="note">Example prices only. You set the real ones.</p>
+      </div>
+    </div>
+
+    <h3>Why the preview is built in layers</h3>
+    <p class="lead">Photographing every possible combination is impossible. Instead, each piece is shot once per colour on a transparent background, from the same angle. The website stacks the layers you pick, so any combination shows instantly.</p>
+    <div class="math">
+      <div><span class="n">≈ 130,000</span><span class="note">possible looks with 6 tops, 6 bottoms, 10 colours, 4 tie styles and a choice of 8 accessories</span></div>
+      <div><span class="n">≈ 170</span><span class="note">product layers needed to show every one of them</span></div>
+      <div><span class="n">1</span><span class="note">photo setup, reused for every new colour you launch</span></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Three ways to build it</p>
+    <h2>Options and investment</h2>
+    <div class="tiers">
+      <article class="tier">
+        <h3>Essential</h3>
+        <p class="price">$1,800 <small>USD</small></p>
+        <p class="note">About 3 weeks</p>
+        <ul>
+          <li>Shopify store with your branding</li>
+          <li>Bikini products with size and colour pickers</li>
+          <li>Accessories sold as add-ons</li>
+          <li>Private session and wholesale enquiry forms</li>
+          <li>Payments, shipping and tax set up</li>
+        </ul>
+        <p class="fit">Good if you want to start selling fast. No combined live preview.</p>
+      </article>
+      <article class="tier rec">
+        <span class="badge">Recommended</span>
+        <h3>Signature</h3>
+        <p class="price">$3,600 <small>USD</small></p>
+        <p class="note">About 5 to 6 weeks</p>
+        <ul>
+          <li>Everything in Essential</li>
+          <li>Custom step-by-step bikini builder, as in your mockup</li>
+          <li>Live layered preview of top, bottom, ties and accessories</li>
+          <li>Price updates with every choice</li>
+          <li>Each order arrives with the full build spec for production</li>
+          <li>You add new colours and accessories from the Shopify admin</li>
+        </ul>
+        <p class="fit">The full experience from your mockup, on a platform you can run yourself.</p>
+      </article>
+      <article class="tier">
+        <h3>Atelier</h3>
+        <p class="price">$6,800 <small>USD</small></p>
+        <p class="note">About 8 to 10 weeks</p>
+        <ul>
+          <li>Fully custom website and checkout</li>
+          <li>Everything in Signature</li>
+          <li>Customers save designs and share them by link</li>
+          <li>Wholesale portal with login and trade prices</li>
+          <li>Private session booking with calendar and deposit</li>
+          <li>Your own production dashboard</li>
+        </ul>
+        <p class="fit">For when wholesale and events are a big part of the business.</p>
+      </article>
+    </div>
+
+    <h3>Optional extras</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Extra</th><th>What it is</th><th class="r">From</th></tr></thead>
+        <tbody>
+          <tr><td>Layer preparation</td><td>I cut out and align your product photos into builder layers</td><td class="r">$6 per layer</td></tr>
+          <tr><td>AI try-on</td><td>Customers upload a photo and see their design on themselves</td><td class="r">$1,200</td></tr>
+          <tr><td>Second language</td><td>Full site in a second language, for example Bahasa Indonesia</td><td class="r">$400</td></tr>
+          <tr><td>Care plan</td><td>Hosting checks, updates, and up to 3 hours of changes each month</td><td class="r">$150 / month</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Running costs paid directly by you: Shopify plan from about $39 a month, domain about $20 a year, and the usual card payment fees. Atelier uses hosting and a database instead of Shopify, at roughly $25 to $50 a month.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Signature plan</p>
+    <h2>How the weeks go</h2>
+    <ol class="time">
+      <li><span class="wk">Week 1</span><span><strong>Discovery and setup.</strong> We confirm the product range, pricing rules and photo plan. I set up the store and the builder data structure.</span></li>
+      <li><span class="wk">Week 2</span><span><strong>Design.</strong> Desktop and mobile designs based on your mockup. Two rounds of changes.</span></li>
+      <li><span class="wk">Weeks 3–4</span><span><strong>Build.</strong> Pages, builder, preview layers, cart and checkout. You get a private preview link to follow along.</span></li>
+      <li><span class="wk">Week 5</span><span><strong>Content and testing.</strong> Your photos and text go in. We test real orders on phone and desktop.</span></li>
+      <li><span class="wk">Week 6</span><span><strong>Launch.</strong> Go live on your domain, plus a short video guide on managing orders and adding colours.</span></li>
+    </ol>
+    <p class="note">The timeline depends on receiving product photos by the end of week 2. Photos are usually what holds a launch back.</p>
+  </section>
+
+  <section>
+    <div class="two">
+      <div style="display:grid;gap:20px;align-content:start">
+        <p class="eyebrow">What I need from you</p>
+        <h3>Your side of the work</h3>
+        <ul class="check">
+          <li>Logo, fonts and brand colours</li>
+          <li>List of cuts, sizes, colours and accessories, with prices</li>
+          <li>Product photos for the layered preview (I can send a shot guide)</li>
+          <li>Lifestyle photos for the home page and Designs gallery</li>
+          <li>Text for the process, private sessions and wholesale</li>
+          <li>Shipping regions, production time and return policy</li>
+          <li>Domain name and a payment account</li>
+        </ul>
+      </div>
+      <div style="display:grid;gap:20px;align-content:start">
+        <p class="eyebrow">For our call</p>
+        <h3>Questions to talk through</h3>
+        <ol class="qs">
+          <li>Where are your customers, and which currencies and payment methods do they use?</li>
+          <li>Does the price change by cut, colour or accessory, or is it fixed per piece?</li>
+          <li>Can tops and bottoms be different sizes and colours? Can people buy just one piece?</li>
+          <li>How are letter beads ordered: free text, or a limited set of letters?</li>
+          <li>How many orders a week do you expect at launch, and who makes them?</li>
+          <li>How do private sessions work today: dates, group size, deposit?</li>
+          <li>What does a wholesale buyer need: a form only, or a price list and ordering?</li>
+          <li>Do you already sell anywhere, such as Instagram or Shopify?</li>
+          <li>Is there a launch date you are working towards?</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="next">
+      <p class="eyebrow">Next steps</p>
+      <h2>Let's talk it through</h2>
+      <p class="lead">After our call I will send a final quote with a fixed price and scope. Work starts with a 40% deposit, 30% is due when you approve the designs, and the last 30% at launch.</p>
+      <p class="muted">The site and all content belong to you once the final payment is made.</p>
+    </div>
+  </section>
+
+  <footer>Suncall Swim website proposal · Prepared by Arnold · 20 November 2026 · Estimates in USD, final pricing after scope is confirmed</footer>
+</div>
+
+<script>
+(function () {
+  var colours = [
+    ["Butter", "#E9C93F"], ["Onyx", "#1E1C1B"], ["Fuchsia", "#D3306F"], ["Cherry", "#C8332D"], ["Navy", "#1F2D55"],
+    ["Lagoon", "#1F8C8A"], ["Aqua", "#2BB3D9"], ["Orchid", "#7E4FA1"], ["Taupe", "#8C7B6E"], ["Cocoa", "#5A3A2A"]
+  ];
+  var state = { top: 0, bottom: 5, tie: "halter", rings: false, beads: false };
+  var $ = function (id) { return document.getElementById(id); };
+
+  function swatches(el, key, prefix) {
+    colours.forEach(function (c, i) {
+      var b = document.createElement("button");
+      b.type = "button"; b.id = prefix + i;
+      b.style.setProperty("--c", c[1]);
+      b.setAttribute("aria-label", c[0]);
+      b.title = c[0];
+      b.addEventListener("click", function () { state[key] = i; render(); });
+      el.appendChild(b);
+    });
+  }
+  swatches($("swTop"), "top", "top-c-");
+  swatches($("swBottom"), "bottom", "bottom-c-");
+
+  $("tie").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    state.tie = b.dataset.v; render();
+  });
+  $("acc-rings").addEventListener("click", function () { state.rings = !state.rings; render(); });
+  $("acc-beads").addEventListener("click", function () { state.beads = !state.beads; render(); });
+
+  function render() {
+    var t = colours[state.top][1], bt = colours[state.bottom][1];
+    $("top").querySelectorAll("path").forEach(function (p) { p.setAttribute("fill", t); p.setAttribute("stroke", t); });
+    $("topStrings").setAttribute("stroke", t);
+    $("bottom").setAttribute("fill", bt); $("bottom").setAttribute("stroke", bt);
+    $("bottomStrings").setAttribute("stroke", bt);
+    var neck = $("neck"); neck.setAttribute("stroke", t);
+    neck.innerHTML = state.tie === "halter"
+      ? '<path d="M112 62 L150 12 L188 62"/><path d="M150 12 L144 34 M150 12 L156 36"/>'
+      : '<path d="M112 62 L196 10"/><path d="M188 62 L104 10"/>';
+    $("rings").hidden = !state.rings;
+    $("beads").hidden = !state.beads;
+    document.querySelectorAll("#swTop button").forEach(function (b, i) { b.setAttribute("aria-pressed", i === state.top); });
+    document.querySelectorAll("#swBottom button").forEach(function (b, i) { b.setAttribute("aria-pressed", i === state.bottom); });
+    document.querySelectorAll("#tie button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.v === state.tie); });
+    $("acc-rings").setAttribute("aria-pressed", state.rings);
+    $("acc-beads").setAttribute("aria-pressed", state.beads);
+    var price = 55 + 50 + (state.rings ? 12 : 0) + (state.beads ? 8 : 0);
+    $("price").textContent = "$" + price;
+    $("summary").textContent = colours[state.top][0] + " top, " + colours[state.bottom][0] + " bottom";
+  }
+  render();
+})();
+</script>
+
+</html>

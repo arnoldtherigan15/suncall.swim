@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marisol Tie-Side Bikini Set — suncall.swim</title>
+  <meta name="description" content="Marisol Tie-Side Bikini Set in Sunset Coral. Try it on with AI before you buy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Announcement bar -->
+  <div class="announcement">
+    Free shipping on orders over $120 &nbsp;·&nbsp; Not sure? Try it on with AI before you buy
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <button class="icon-btn header__menu" aria-label="Open menu"><i data-lucide="menu"></i></button>
+    <nav class="header__nav" aria-label="Main">
+      <a href="#">New In</a>
+      <a href="#" class="is-active">Bikinis</a>
+      <a href="#">One-Pieces</a>
+      <a href="#">Cover-Ups</a>
+      <a href="#">Mix &amp; Match</a>
+    </nav>
+    <a href="#" class="logo">suncall.swim</a>
+    <div class="header__actions">
+      <button class="icon-btn hide-mobile" aria-label="Search"><i data-lucide="search"></i></button>
+      <button class="icon-btn hide-mobile" aria-label="Account"><i data-lucide="user"></i></button>
+      <button class="icon-btn hide-mobile" aria-label="Wishlist"><i data-lucide="heart"></i></button>
+      <button class="bag-btn" aria-label="Shopping bag"><i data-lucide="shopping-bag"></i><span>Bag (<span id="bagCount">2</span>)</span></button>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="#">Home</a> / <a href="#">Bikinis</a> / <span>Marisol Tie-Side Set</span>
+    </nav>
+
+    <!-- Product -->
+    <section class="product">
+      <div class="gallery">
+        <div class="gallery__thumbs" role="tablist" aria-label="Product images">
+          <button class="thumb is-active" data-src="photos/main.jpg" aria-label="Front view"><img src="photos/main.jpg" alt=""></button>
+          <button class="thumb" data-src="photos/lifestyle-hat.jpg" aria-label="Lifestyle"><img src="photos/lifestyle-hat.jpg" alt=""></button>
+          <button class="thumb" data-src="photos/coverup-beach.jpg" aria-label="Styled with cover-up"><img src="photos/coverup-beach.jpg" alt=""></button>
+          <button class="thumb" data-src="photos/sun-hat.jpg" aria-label="Accessories"><img src="photos/sun-hat.jpg" alt=""></button>
+          <button class="thumb thumb--video" data-src="photos/turquoise-bikini.jpg" aria-label="Video"><img src="photos/turquoise-bikini.jpg" alt=""><i data-lucide="play"></i></button>
+        </div>
+        <div class="gallery__main">
+          <img id="mainImage" src="photos/main.jpg" alt="Model wearing the Marisol Tie-Side Bikini Set on the beach">
+          <button class="badge" data-open-tryon><i data-lucide="sparkles"></i>AI Try-On available</button>
+        </div>
+      </div>
+
+      <div class="info">
+        <div class="info__title">
+          <p class="eyebrow">New · Summer '27</p>
+          <h1>Marisol Tie-Side Bikini Set</h1>
+          <a href="#reviews" class="rating">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span>4.8 · 126 reviews</span>
+          </a>
+          <p class="price"><strong>$89</strong><span>Top $45 · Bottom $44 — sold separately</span></p>
+        </div>
+
+        <hr>
+
+        <div class="option">
+          <p class="option__label">Color — <span id="colorName">Sunset Coral</span></p>
+          <div class="swatches" role="radiogroup" aria-label="Color">
+            <button class="swatch is-active" style="--c:#E8603C" data-name="Sunset Coral" role="radio" aria-checked="true" aria-label="Sunset Coral"></button>
+            <button class="swatch" style="--c:#2F6F6A" data-name="Lagoon" role="radio" aria-checked="false" aria-label="Lagoon"></button>
+            <button class="swatch" style="--c:#D8BFA0" data-name="Sand" role="radio" aria-checked="false" aria-label="Sand"></button>
+            <button class="swatch" style="--c:#1F1A17" data-name="Noir" role="radio" aria-checked="false" aria-label="Noir"></button>
+          </div>
+        </div>
+
+        <div class="option">
+          <div class="option__row">
+            <p class="option__label">Top size</p>
+            <a href="#" class="link-icon"><i data-lucide="ruler"></i>Size guide</a>
+          </div>
+          <div class="chips" data-group="top">
+            <button class="chip">XS</button>
+            <button class="chip is-active">S</button>
+            <button class="chip">M</button>
+            <button class="chip">L</button>
+            <button class="chip" disabled>XL</button>
+          </div>
+        </div>
+
+        <div class="option">
+          <p class="option__label">Bottom size</p>
+          <div class="chips" data-group="bottom">
+            <button class="chip">XS</button>
+            <button class="chip">S</button>
+            <button class="chip is-active">M</button>
+            <button class="chip">L</button>
+            <button class="chip">XL</button>
+          </div>
+        </div>
+
+        <div class="tryon-card">
+          <span class="tryon-card__icon"><i data-lucide="sparkles"></i></span>
+          <div class="tryon-card__copy">
+            <h2>See it on you</h2>
+            <p>Upload one photo — our AI shows how this set looks on your body in about 20 seconds.</p>
+          </div>
+          <button class="btn btn--outline btn--pill" data-open-tryon><i data-lucide="camera"></i>Try it on</button>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn btn--primary btn--block" id="addToBag">Add to bag — $89</button>
+          <button class="btn btn--square" aria-label="Add to wishlist" id="wishBtn"><i data-lucide="heart"></i></button>
+        </div>
+
+        <ul class="assurances">
+          <li><i data-lucide="truck"></i>Free shipping over $120</li>
+          <li><i data-lucide="rotate-ccw"></i>30-day easy returns</li>
+          <li><i data-lucide="leaf"></i>Recycled nylon</li>
+        </ul>
+
+        <div class="accordions">
+          <details open>
+            <summary>Details &amp; fabric</summary>
+            <p>Triangle top with removable cups and adjustable straps. Tie-side bottom with moderate coverage. 78% recycled nylon, 22% elastane — chlorine and sun resistant, UPF 50+.</p>
+          </details>
+          <details>
+            <summary>Fit &amp; sizing</summary>
+            <p>Runs true to size. Model is 175 cm and wears a size S top and M bottom. Between sizes? Size up for the top, true size for the bottom.</p>
+          </details>
+          <details>
+            <summary>Shipping &amp; returns</summary>
+            <p>Free standard shipping on orders over $120. Returns accepted within 30 days with hygiene liner intact and tags attached.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Complete the look -->
+    <section class="look">
+      <div class="look__header">
+        <div>
+          <p class="eyebrow">Mix &amp; Match</p>
+          <h2>Complete the look</h2>
+        </div>
+        <a href="#" class="link-icon link-icon--strong">Shop all cover-ups<i data-lucide="arrow-right"></i></a>
+      </div>
+      <div class="look__grid">
+        <a href="#" class="card"><div class="card__img"><img src="photos/coverup-beach.jpg" alt="Costa Linen Sarong" loading="lazy"></div><h3>Costa Linen Sarong</h3><p>$52 · 3 colors</p></a>
+        <a href="#" class="card"><div class="card__img"><img src="photos/turquoise-bikini.jpg" alt="Marisol High-Waist Bottom" loading="lazy"></div><h3>Marisol High-Waist Bottom</h3><p>$46 · 4 colors</p></a>
+        <a href="#" class="card"><div class="card__img"><img src="photos/sun-hat.jpg" alt="Soleil Woven Bucket Hat" loading="lazy"></div><h3>Soleil Woven Bucket Hat</h3><p>$38</p></a>
+        <a href="#" class="card"><div class="card__img"><img src="photos/lifestyle-hat.jpg" alt="Lagoon Crochet Cover-Up" loading="lazy"></div><h3>Lagoon Crochet Cover-Up</h3><p>$68 · 2 colors</p></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__news">
+        <p class="logo logo--light">suncall.swim</p>
+        <p>Get 10% off your first order and early access to new drops.</p>
+        <form class="subscribe" onsubmit="event.preventDefault(); showToast('Thanks! Check your inbox for 10% off.')">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+          <button class="btn btn--primary btn--pill btn--sm">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer__links">
+        <div><h4>Shop</h4><a href="#">Bikinis</a><a href="#">One-Pieces</a><a href="#">Cover-Ups</a></div>
+        <div><h4>Help</h4><a href="#">Size guide</a><a href="#">Shipping</a><a href="#">Returns</a></div>
+        <div><h4>Follow</h4><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Pinterest</a></div>
+      </div>
+    </div>
+    <hr>
+    <p class="footer__copy">© 2027 suncall.swim — Made under the sun.</p>
+  </footer>
+
+  <!-- Try-On modal -->
+  <div class="modal" id="tryon" role="dialog" aria-modal="true" aria-labelledby="tryonTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <header class="modal__header">
+        <h2 id="tryonTitle"><i data-lucide="sparkles"></i><span id="tryonHeading">Try it on</span></h2>
+        <ol class="stepper" id="stepper">
+          <li data-step="1"><span class="stepper__num">1</span><i data-lucide="check"></i>Upload</li>
+          <li data-step="2"><span class="stepper__num">2</span><i data-lucide="check"></i>Generate</li>
+          <li data-step="3"><span class="stepper__num">3</span><i data-lucide="check"></i>Result</li>
+        </ol>
+        <button class="icon-btn icon-btn--soft" data-close aria-label="Close"><i data-lucide="x"></i></button>
+      </header>
+
+      <!-- Step 1: Upload -->
+      <div class="modal__body step" data-step="1">
+        <aside class="selected">
+          <img src="photos/main.jpg" alt="">
+          <h3>Marisol Tie-Side Bikini Set</h3>
+          <p class="selected__meta">Sunset Coral · Top S · Bottom M</p>
+        </aside>
+        <div class="upload">
+          <label class="dropzone" id="dropzone">
+            <input type="file" accept="image/jpeg,image/png" id="photoInput" hidden>
+            <span class="dropzone__icon"><i data-lucide="image-up"></i></span>
+            <strong>Drop your photo here, or browse</strong>
+            <span class="muted">JPG or PNG, up to 10 MB</span>
+            <span class="btn btn--outline btn--pill btn--sm" id="cameraBtn"><i data-lucide="camera"></i>Take a photo instead</span>
+          </label>
+          <p class="upload__label">For the best result</p>
+          <ul class="tips">
+            <li><i data-lucide="person-standing"></i>Full body, facing forward</li>
+            <li><i data-lucide="sun"></i>Bright, even lighting</li>
+            <li><i data-lucide="shirt"></i>Fitted clothes work best</li>
+          </ul>
+          <p class="privacy"><i data-lucide="lock"></i>Your photo is private — processed securely and deleted after 24 hours.</p>
+          <button class="link-btn" id="sampleBtn">No photo handy? Use a sample photo</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Generating -->
+      <div class="modal__body step" data-step="2" hidden>
+        <div class="processing">
+          <img id="processingPhoto" src="photos/coverup-beach.jpg" alt="Your uploaded photo">
+          <div class="shimmer"></div>
+        </div>
+        <div class="progress">
+          <span class="progress__icon"><i data-lucide="loader-circle"></i></span>
+          <h3>Styling your look…</h3>
+          <p>Our AI is fitting the Marisol set in <span class="js-color">Sunset Coral</span> to your photo. This usually takes about 20 seconds.</p>
+          <div class="bar"><div class="bar__fill" id="barFill"></div></div>
+          <div class="progress__meta"><span id="progressLabel">Detecting body shape</span><span id="progressTime">~20 sec left</span></div>
+          <p class="fit-tip"><i data-lucide="lightbulb"></i>Fit tip: Marisol runs true to size. Between sizes? Size up for the top, true size for the bottom.</p>
+        </div>
+      </div>
+
+      <!-- Step 3: Result -->
+      <div class="modal__body step" data-step="3" hidden>
+        <div class="result">
+          <figure class="result__before">
+            <img id="beforePhoto" src="photos/coverup-beach.jpg" alt="Your photo">
+            <figcaption>Your photo</figcaption>
+          </figure>
+          <figure class="result__after">
+            <img src="photos/tryon-result.jpg" alt="AI try-on result">
+            <figcaption><i data-lucide="info"></i>AI preview — actual fit may vary slightly</figcaption>
+          </figure>
+        </div>
+        <div class="result__actions">
+          <div>
+            <h3>Marisol Tie-Side Bikini Set</h3>
+            <p class="muted">$89 · Top S · Bottom M</p>
+          </div>
+          <div class="option">
+            <p class="option__label">Try another color</p>
+            <div class="swatches swatches--result">
+              <button class="swatch is-active" style="--c:#E8603C" data-name="Sunset Coral" aria-label="Sunset Coral"></button>
+              <button class="swatch" style="--c:#2F6F6A" data-name="Lagoon" aria-label="Lagoon"></button>
+              <button class="swatch" style="--c:#D8BFA0" data-name="Sand" aria-label="Sand"></button>
+              <button class="swatch" style="--c:#1F1A17" data-name="Noir" aria-label="Noir"></button>
+            </div>
+            <p class="muted small">Each new color takes ~20 seconds to generate.</p>
+          </div>
+          <button class="btn btn--primary btn--block" id="resultAddToBag"><i data-lucide="shopping-bag"></i>Add to bag — $89</button>
+          <div class="result__secondary">
+            <a class="btn btn--outline" href="photos/tryon-result.jpg" download><i data-lucide="download"></i>Save image</a>
+            <button class="btn btn--outline" id="retryBtn"><i data-lucide="refresh-cw"></i>Use another photo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
