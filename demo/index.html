@@ -579,13 +579,14 @@ footer nav a { text-decoration: none; }
   function quote(st, full) {
     var L = [], t = 0;
     if (st.pkg !== "alacarte") { L.push({ t: PKG[st.pkg].name + " package", p: PKG[st.pkg].price }); t += PKG[st.pkg].price; }
+    else L.push({ t: "A la carte", note: "Pay per piece" });
     function piece(label, key, price) {
-      if (st.pkg === "alacarte") { L.push({ t: label, p: price }); t += price; } else L.push({ t: label, sub: true, inc: true });
+      if (st.pkg === "alacarte") { L.push({ t: label, sub: true, p: price }); t += price; } else L.push({ t: label, sub: true, inc: true });
     }
     if (st.mode === "set") {
       piece("Bottom · " + P.bottom[st.bottom.cut].name + ", " + st.bottom.size + ", " + FAB[st.bottom.col].n, "bottom", PIECE.bottom);
       if (full || reached("top", st)) piece("Top · " + P.top[st.top.cut].name + ", " + st.top.size + ", " + FAB[st.top.col].n, "top", PIECE.top);
-      else L.push({ t: "Top · not chosen yet", ghost: true });
+      else L.push({ t: "Top · not chosen yet", sub: true, ghost: true });
       if (full || reached("wear", st)) L.push({ t: "Worn as " + WEAR[st.wear].name, sub: true, inc: true, zero: true });
     } else piece("One-piece · " + st.one.size + ", " + FAB[st.one.col].n, "one", PIECE.one);
     var u = usage(st), groups = {};
@@ -820,7 +821,7 @@ footer nav a { text-decoration: none; }
     FX.parts = keys; FX.acc = accNow;
     if ($("pkgPill").textContent !== PKG[S.pkg].name) { $("pkgPill").textContent = PKG[S.pkg].name; $("pkgPill").classList.remove("swap"); void $("pkgPill").offsetWidth; $("pkgPill").classList.add("swap"); }
     var q = quote(S);
-    $("summary").innerHTML = "<div class='lines'>" + q.L.map(function (l) { return "<div class='line" + (l.sub ? " sub" : "") + (l.ghost ? " ghost" : "") + "'><span>" + l.t + (l.part ? " (" + l.part + ")" : "") + "</span><span>" + (l.ghost ? "—" : l.inc ? (l.zero ? "" : "Included") : idr(l.p)) + "</span></div>"; }).join("") + "</div>" +
+    $("summary").innerHTML = "<div class='lines'>" + q.L.map(function (l) { return "<div class='line" + (l.sub ? " sub" : "") + (l.ghost ? " ghost" : "") + "'><span>" + l.t + (l.part ? " (" + l.part + ")" : "") + "</span><span>" + (l.note ? l.note : l.ghost ? "—" : l.inc ? (l.zero ? "" : "Included") : idr(l.p)) + "</span></div>"; }).join("") + "</div>" +
       "<div class='total'><div><b class='num' id='totalNum'>" + idr(FX.total === null ? q.t : FX.total) + "</b><small>Made to order</small></div><button class='btn gold' data-act='addbag' id='addBag'>Add to bag</button></div>";
     countTo($("totalNum"), FX.total, q.t); countTo($("mTotal"), FX.total, q.t); FX.total = q.t;
     $("mPkg").textContent = PKG[S.pkg].name; $("mNext").textContent = nextLabel();
@@ -852,7 +853,7 @@ footer nav a { text-decoration: none; }
   }
   function toast(m) { $("toastLayer").innerHTML = "<div class='toast' role='status'>" + m + "</div>"; clearTimeout(toast.t); toast.t = setTimeout(function () { $("toastLayer").innerHTML = ""; }, 2600); }
   function openBag() {
-    var items = bag.length ? bag.map(function (b, i) { return "<div class='bag-item'><div class='mini'>" + compose(b.st, true) + "</div><div><b>" + b.title + "</b><p>" + b.q.L.filter(function (l) { return !l.ghost && !l.zero; }).map(function (l) { return l.t; }).join("<br>") + "</p><button class='rm' data-rm='" + i + "'>Remove</button></div><b class='num'>" + idr(b.q.t) + "</b></div>"; }).join("") : "<p class='empty'>Your bag is empty. Design a set to get started.</p>";
+    var items = bag.length ? bag.map(function (b, i) { return "<div class='bag-item'><div class='mini'>" + compose(b.st, true) + "</div><div><b>" + b.title + "</b><p>" + b.q.L.filter(function (l) { return !l.ghost && !l.zero && !l.note; }).map(function (l) { return l.t; }).join("<br>") + "</p><button class='rm' data-rm='" + i + "'>Remove</button></div><b class='num'>" + idr(b.q.t) + "</b></div>"; }).join("") : "<p class='empty'>Your bag is empty. Design a set to get started.</p>";
     var sum = bag.reduce(function (s, b) { return s + b.q.t; }, 0);
     $("bagLayer").innerHTML = "<div class='scrim' data-close></div><aside class='drawer' role='dialog' aria-modal='true' aria-labelledby='bagTitle'><header><h3 id='bagTitle'>Your bag</h3><button class='link' data-close id='bagClose'>Close</button></header><div class='bag-items'>" + items + "</div><footer><div class='line'><span>Subtotal</span><span class='num'>" + idr(sum) + "</span></div><button class='btn' id='checkoutBtn'" + (bag.length ? "" : " disabled") + ">Checkout</button><p class='note' id='coNote'>Pay with QRIS, bank transfer or card. Every set is made to order.</p></footer></aside>";
     $("bagLayer").hidden = false; $("bagClose").focus();
