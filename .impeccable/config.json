@@ -29,6 +29,15 @@
         ],
         "createdAt": "2026-11-20T02:30:28.186Z",
         "reason": "Claude: same labelled builder sketch as proposal/index.html"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "demo/demo.html"
+        ],
+        "createdAt": "2026-11-20T02:49:20.126Z",
+        "reason": "Claude: flagged .band (full-bleed gutter wrapper) and .stage (centres a 72%-wide SVG); both are inset by design"
       }
     ]
   }
