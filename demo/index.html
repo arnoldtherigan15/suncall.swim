@@ -101,6 +101,7 @@ p { margin: 0; }
 .pkg { background: var(--sand); border: 1px solid var(--line); border-radius: 4px; padding: 36px 32px 32px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 20px; position: relative; }
 .pkg::after { content: ""; position: absolute; inset: 8px; border: 1px solid var(--line); border-radius: 2px; pointer-events: none; }
 .pkg h3 { font-size: 40px; line-height: 1; }
+.pkg-dots { display: none; }
 .pkg .price { font-size: 18px; font-weight: 500; }
 .pkg .price small { display: block; font-weight: 300; font-size: 14px; color: var(--muted); margin-top: 2px; }
 .pkg ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; font-weight: 300; align-content: start; }
@@ -300,7 +301,13 @@ footer nav a { text-decoration: none; }
   .look:not(:first-child) .tag span:first-child { display: none; }
   .look:not(:first-child) .tag { justify-content: flex-end; background: none; }
   .packages .inner { padding-block: 64px; gap: 28px; }
-  .pkgs { grid-template-columns: minmax(0, 1fr); }
+  .pkgs { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 84%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; margin-inline: calc(-1 * max(var(--gutter), env(safe-area-inset-left, 0px))); padding-inline: max(var(--gutter), env(safe-area-inset-left, 0px)); scroll-padding-inline: max(var(--gutter), env(safe-area-inset-left, 0px)); scrollbar-width: none; }
+  .pkgs::-webkit-scrollbar { display: none; }
+  .pkg { scroll-snap-align: start; }
+  .pkg-dots { display: flex; justify-content: center; gap: 8px; margin-top: -8px; }
+  .pkg-dots button { width: 28px; height: 28px; border: 0; background: none; padding: 0; display: grid; place-items: center; }
+  .pkg-dots button::before { content: ""; width: 7px; height: 7px; border-radius: 4px; background: var(--line-2); transition: width .35s var(--ease), background .35s var(--ease); }
+  .pkg-dots button[aria-current="true"]::before { width: 22px; background: var(--ink); }
   .builder { grid-template-columns: minmax(0, 1fr); gap: 0; padding-block: 64px 120px; }
   .b-head { padding-bottom: 24px; }
   .preview-col { order: -1; position: sticky; top: 0; z-index: 6; height: auto; max-height: none; grid-template-rows: auto; margin-inline: calc(-1 * max(var(--gutter), env(safe-area-inset-left, 0px))); gap: 0; }
@@ -396,7 +403,8 @@ footer nav a { text-decoration: none; }
       <h2>Our packages</h2>
       <p>Every package includes one bikini set or one-piece, made to your size.</p>
     </div>
-    <div class="pkgs" id="pkgCards"></div>
+    <div class="pkgs" id="pkgCards" role="region" aria-label="Packages, swipe to compare" tabindex="0"></div>
+    <div class="pkg-dots" id="pkgDots" aria-label="Choose package card"></div>
   </section>
 </div>
 
@@ -931,6 +939,17 @@ footer nav a { text-decoration: none; }
   if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { es.forEach(function (en) { $("mbar").hidden = !en.isIntersecting; }); }, { threshold: .05 }).observe($("builder"));
 
   renderPkgCards();
+  (function () {
+    var track = $("pkgCards"), dots = $("pkgDots"), keys = Object.keys(PKG);
+    dots.innerHTML = keys.map(function (k, i) { return "<button id='pdot-" + i + "' aria-label='Show " + PKG[k].name + "' aria-current='" + (i === 0) + "'></button>"; }).join("");
+    dots.addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; var i = +b.id.split("-")[1], card = track.children[i]; track.scrollTo({ left: card.offsetLeft - track.firstElementChild.offsetLeft, behavior: REDUCED ? "auto" : "smooth" }); });
+    var raf = 0;
+    track.addEventListener("scroll", function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(function () {
+      var cards = track.children, best = 0, bd = Infinity, x = track.scrollLeft + track.firstElementChild.offsetLeft;
+      for (var i = 0; i < cards.length; i++) { var d = Math.abs(cards[i].offsetLeft - x); if (d < bd) { bd = d; best = i; } }
+      Array.prototype.forEach.call(dots.children, function (b, i) { b.setAttribute("aria-current", i === best); });
+    }); }, { passive: true });
+  })();
   renderSteps();
 })();
 </script>
