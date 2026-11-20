@@ -22,6 +22,15 @@ Every piece is assembled to order from the customer's own choices: cut, size, fa
 ## Operating Context
 Builder flow from the client mockup: Bottoms (cut, size S–XL, colour) → Top (cut, size, colour) or One piece → Tie style → Hardware accessories (rings, shells, charms) → Beads (regular and letter beads) → Add to bag. Supporting pages: Designs gallery, The process, Shop, Accessories, Book a private session, Wholesale enquiry.
 
+## Client mockup v2 (BIKINI BAR.pdf, received 2026-11-20)
+- Brand lockup: SUN CALL SWIM. Nav: Design your own bikini, Inspo, Private event, Accessories, Wholesale.
+- Packages (IDR): Deluxe 1.500.000 (1 bikini set or one-piece, unlimited regular beads, unlimited patches, swap any string colours, 3 regular charms, 1 resin ring, 1 Suncall pouch). Premium 1.900.000 (all Deluxe plus unlimited eyelets, rhinestones and shell buttons, 3 premium glass beads, 1 premium charm, 1 metal accessory). A la carte: pay per bikini piece and per accessory.
+- Shapes. Bottoms: Capri, Ivy, Io, Isla, Luma (one more name cut off). Tops: Rosy, Sunny, Daisy, Honey. One-piece: one style.
+- Fabrics: Panthera, Seablue, Black, Purple, Taupe, Leopard, Butter Yellow, Brown, Magenta, Khaki. Leopard and Panthera are prints. One-piece comes in Leopard, Panthera, Butter Yellow, Brown, Magenta.
+- Sizes S, M, L, XL.
+- Ways to wear the top: Daisy, Sunny, Honey.
+- Accessory categories: beads (regular, premium), patches, string colours, bikini charms, stainless accessories, buttons, resin rings, rhinestones.
+
 ## Capabilities and Constraints
 - Undecided: platform (Shopify recommended, custom Next.js + Supabase alternative), pricing rules, number of cuts and colours, whether previews are photos or illustrations.
 - About 10 fabric colours shown in the mockup *(inferred)*.
