@@ -161,7 +161,8 @@ p { margin: 0; }
 .preview-col { position: sticky; top: 24px; display: grid; gap: 24px; }
 .stage { background: var(--shell); border-radius: 6px; aspect-ratio: 560 / 600; display: grid; place-items: center; position: relative; overflow: hidden; }
 .stage .cap { position: absolute; top: 24px; left: 0; right: 0; text-align: center; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--quiet); }
-.stage svg { width: 72%; height: auto; }
+#stage { position: absolute; inset: 48px 24px 24px; display: grid; place-items: center; }
+.stage svg { width: auto; height: 100%; max-width: 100%; }
 .stage svg * { transition: fill .45s var(--ease), stroke .45s var(--ease); }
 .summary { display: grid; gap: 12px; font-variant-numeric: tabular-nums; }
 .line { display: flex; justify-content: space-between; gap: 16px; font-size: 15px; }
@@ -252,7 +253,7 @@ footer nav a { text-decoration: none; }
   .b-head { padding-bottom: 24px; }
   .preview-col { order: -1; position: sticky; top: 0; z-index: 6; margin-inline: calc(-1 * max(var(--gutter), env(safe-area-inset-left, 0px))); gap: 0; }
   .stage { aspect-ratio: auto; height: 250px; border-radius: 0; }
-  .stage svg { width: auto; height: 92%; }
+  #stage { inset: 30px 16px 8px; }
   .stage .cap { top: 10px; }
   .preview-col .summary { display: none; }
   .tiles { gap: 8px; }
