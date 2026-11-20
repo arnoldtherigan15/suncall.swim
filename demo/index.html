@@ -181,8 +181,10 @@ p { margin: 0; }
 .letters input:focus { outline: none; border-color: var(--ink); }
 .step-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; padding-top: 4px; }
 
-.preview-col { position: sticky; top: 24px; display: grid; gap: 24px; }
-.stage { background: var(--shell); border-radius: 6px; aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+.preview-col { position: sticky; top: 24px; display: grid; gap: 20px; height: calc(100vh - 48px); height: calc(100svh - 48px); max-height: 960px; grid-template-rows: minmax(0, 1fr) auto; }
+#steps { overflow-anchor: none; }
+.summary .lines { display: grid; gap: 10px; max-height: 128px; overflow: auto; padding-right: 4px; scrollbar-width: thin; scrollbar-color: var(--line-2) transparent; }
+.stage { background: var(--shell); border-radius: 6px; min-height: 0; position: relative; overflow: hidden; }
 .stage .cap { position: absolute; top: 22px; left: 0; right: 0; text-align: center; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--quiet); }
 #stage { position: absolute; inset: 48px 24px 24px; display: grid; place-items: center; }
 .stage svg { width: auto; height: 100%; max-width: 100%; }
@@ -301,7 +303,7 @@ footer nav a { text-decoration: none; }
   .pkgs { grid-template-columns: minmax(0, 1fr); }
   .builder { grid-template-columns: minmax(0, 1fr); gap: 0; padding-block: 64px 120px; }
   .b-head { padding-bottom: 24px; }
-  .preview-col { order: -1; position: sticky; top: 0; z-index: 6; margin-inline: calc(-1 * max(var(--gutter), env(safe-area-inset-left, 0px))); gap: 0; }
+  .preview-col { order: -1; position: sticky; top: 0; z-index: 6; height: auto; max-height: none; grid-template-rows: auto; margin-inline: calc(-1 * max(var(--gutter), env(safe-area-inset-left, 0px))); gap: 0; }
   .stage { aspect-ratio: auto; height: 250px; border-radius: 0; }
   #stage { inset: 30px 16px 8px; }
   .stage .cap { top: 10px; }
@@ -754,7 +756,7 @@ footer nav a { text-decoration: none; }
   }
 
   /* ---------- render ---------- */
-  var FX = { step: -1, mode: "", parts: null, acc: null, total: null, just: null, sweep: null, tick: null };
+  var FX = { anchor: null, anchorTop: null, step: -1, mode: "", parts: null, acc: null, total: null, just: null, sweep: null, tick: null };
   var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function renderSteps() {
     var st = steps(), focusId = document.activeElement && document.activeElement.id;
@@ -776,6 +778,8 @@ footer nav a { text-decoration: none; }
     });
     $("steps").innerHTML = h;
     if (focusId && $(focusId)) $(focusId).focus({ preventScroll: true });
+    if (FX.anchor && $(FX.anchor) && FX.anchorTop !== null) { var diff = $(FX.anchor).getBoundingClientRect().top - FX.anchorTop; if (Math.abs(diff) > 1) window.scrollBy(0, diff); }
+    FX.anchor = FX.anchorTop = null;
     if (FX.just && $(FX.just)) $(FX.just).classList.add("just");
     if (FX.tick && $("p-" + FX.tick)) $("p-" + FX.tick).previousElementSibling.classList.add("tick");
     FX.just = FX.sweep = FX.tick = null;
@@ -797,7 +801,7 @@ footer nav a { text-decoration: none; }
     FX.parts = keys; FX.acc = accNow;
     if ($("pkgPill").textContent !== PKG[S.pkg].name) { $("pkgPill").textContent = PKG[S.pkg].name; $("pkgPill").classList.remove("swap"); void $("pkgPill").offsetWidth; $("pkgPill").classList.add("swap"); }
     var q = quote(S);
-    $("summary").innerHTML = q.L.map(function (l) { return "<div class='line" + (l.sub ? " sub" : "") + (l.ghost ? " ghost" : "") + "'><span>" + l.t + (l.part ? " (" + l.part + ")" : "") + "</span><span>" + (l.ghost ? "—" : l.inc ? (l.zero ? "" : "Included") : idr(l.p)) + "</span></div>"; }).join("") +
+    $("summary").innerHTML = "<div class='lines'>" + q.L.map(function (l) { return "<div class='line" + (l.sub ? " sub" : "") + (l.ghost ? " ghost" : "") + "'><span>" + l.t + (l.part ? " (" + l.part + ")" : "") + "</span><span>" + (l.ghost ? "—" : l.inc ? (l.zero ? "" : "Included") : idr(l.p)) + "</span></div>"; }).join("") + "</div>" +
       "<div class='total'><div><b class='num' id='totalNum'>" + idr(FX.total === null ? q.t : FX.total) + "</b><small>Made to order</small></div><button class='btn gold' data-act='addbag' id='addBag'>Add to bag</button></div>";
     countTo($("totalNum"), FX.total, q.t); countTo($("mTotal"), FX.total, q.t); FX.total = q.t;
     $("mPkg").textContent = PKG[S.pkg].name; $("mNext").textContent = nextLabel();
@@ -843,6 +847,7 @@ footer nav a { text-decoration: none; }
       var act = a.dataset.act;
       if (["set","pkg","mode","cat","string"].indexOf(act) > -1 && a.id) FX.just = a.id;
       if (act === "qty") FX.tick = a.dataset.id;
+      if (act !== "go" && act !== "next" && act !== "addbag" && a.id && a.closest("#steps")) { FX.anchor = a.id; FX.anchorTop = a.getBoundingClientRect().top; }
       if (act === "set") { var p = a.dataset.k.split("."), v = a.dataset.v; if (p[1] === "col") v = +v; if (p.length === 2) S[p[0]][p[1]] = v; else S[p[0]] = v; renderSteps(); }
       else if (act === "pkg") { S.pkg = a.dataset.v; renderSteps(); }
       else if (act === "mode") { if (S.mode !== a.dataset.v) { S.mode = a.dataset.v; S.done = { package: true }; S.step = 1; renderSteps(); } }
