@@ -153,7 +153,7 @@ footer { padding-block: 40px 56px; font-size: .85rem; color: var(--muted); borde
           <li>Ways to wear the top, then beads, letter beads, patches, string colours, charms, stainless pieces, buttons, resin rings and rhinestones</li>
           <li>Drag beads, patches and rhinestones to exactly where you want them on the bikini. Charms, stainless pieces and buttons sit in their set places</li>
           <li>Live preview and a running price, with package allowances counted for you</li>
-          <li>Pay with QRIS, virtual account, e-wallet or card through Midtrans</li>
+          <li>Pay by card and Apple Pay through your existing Stripe setup, plus QRIS, virtual account and e-wallet for customers in Indonesia</li>
         </ul>
       </div>
       <div class="mod">
@@ -200,7 +200,7 @@ footer { padding-block: 40px 56px; font-size: .85rem; color: var(--muted); borde
         <h3>A custom order</h3>
         <ol class="flow">
           <li><div><b>Customer designs her bikini</b><span>Package, shape, size, fabric, how to wear it, then accessories, dragged into place. The price updates as she goes.</span></div></li>
-          <li><div><b>Pays at checkout</b><span>QRIS, virtual account, e-wallet or card. Fabric and accessory stock goes down.</span></div></li>
+          <li><div><b>Pays at checkout</b><span>Card, Apple Pay, QRIS, virtual account or e-wallet. Fabric and accessory stock goes down.</span></div></li>
           <li><div><b>Confirmation <i class="wa">WhatsApp</i></b><span>She gets an order confirmation by WhatsApp and email.</span></div></li>
           <li><div><b>You make it</b><span>Print the production sheet, with the placement picture, and move the order through cutting, sewing and finishing.</span></div></li>
           <li><div><b>Shipped <i class="wa">WhatsApp</i></b><span>Add the tracking number. The customer is notified automatically.</span></div></li>
@@ -254,7 +254,8 @@ footer { padding-block: 40px 56px; font-size: .85rem; color: var(--muted); borde
         <thead><tr><th>Part</th><th>Tool</th><th>Why</th></tr></thead>
         <tbody>
           <tr><td>Store, checkout, orders, customers</td><td>Shopify (Basic plan)</td><td>Reliable checkout and admin you run yourself</td></tr>
-          <tr><td>Payments</td><td>Midtrans</td><td>QRIS, virtual account, e-wallet and card for Indonesia</td></tr>
+          <tr><td>Card payments</td><td>Stripe, through Shopify Payments where available</td><td>Keeps the provider you already use, for local and international cards</td></tr>
+          <tr><td>Indonesian payments</td><td>Midtrans or Xendit</td><td>QRIS, virtual account and e-wallet</td></tr>
           <tr><td>Bikini builder</td><td>Built for Suncall Swim</td><td>Your packages, shapes and accessories, with a live preview</td></tr>
           <tr><td>Fabric and accessory stock</td><td>Shopify inventory with a bundle app</td><td>Each order deducts the exact fabrics and pieces used</td></tr>
           <tr><td>Private session booking</td><td>Shopify booking app with deposits</td><td>Calendar, deposit at booking, balance invoice</td></tr>
@@ -271,7 +272,7 @@ footer { padding-block: 40px 56px; font-size: .85rem; color: var(--muted); borde
     <h2>Timeline</h2>
     <p class="lead">Eight working weeks, starting the week after the deposit. With a start on 1 December, we take a short break over Christmas and New Year and launch in late January.</p>
     <ol class="tl">
-      <li><span class="w">Week 1<small>1–5 Dec</small></span><span><strong>Setup and decisions.</strong> Shopify and Midtrans accounts, test the add-ons, agree on deposit and booking rules, photo guide sent to you.</span></li>
+      <li><span class="w">Week 1<small>1–5 Dec</small></span><span><strong>Setup and decisions.</strong> Shopify account, connect Stripe and an Indonesian payment provider, test the add-ons, agree on deposit and booking rules, photo guide sent to you.</span></li>
       <li><span class="w">Week 2<small>8–12 Dec</small></span><span><strong>Design.</strong> Final desktop and mobile design based on the prototype. First round of feedback.</span></li>
       <li><span class="w">Week 3<small>15–19 Dec</small></span><span><strong>Store pages.</strong> Home, Inspo, packages, private events, accessories, wholesale. Second round of design feedback. <b>Product photos and price list due.</b></span></li>
       <li class="pause"><span class="w">Break<small>22 Dec – 2 Jan</small></span><span>Christmas and New Year.</span></li>
@@ -353,12 +354,13 @@ footer { padding-block: 40px 56px; font-size: .85rem; color: var(--muted); borde
           <tr><td>Bundle and stock app</td><td class="r">USD 10–30 / month</td></tr>
           <tr><td>WhatsApp app, plus Meta's per-message fee</td><td class="r">USD 5–15 / month + messages</td></tr>
           <tr><td>Domain name</td><td class="r">around IDR 250.000 / year</td></tr>
-          <tr><td>Midtrans payment fee</td><td class="r">about 0.7% per QRIS payment</td></tr>
-          <tr><td>Shopify fee for using a non-Shopify payment provider</td><td class="r">about 2% per order on Basic</td></tr>
+          <tr><td>Card payment fee (Stripe or Shopify Payments)</td><td class="r">per your Stripe or Shopify rate</td></tr>
+          <tr><td>QRIS payment fee (Midtrans or Xendit)</td><td class="r">about 0.7% per payment</td></tr>
+          <tr><td>Shopify fee on orders paid through an outside provider</td><td class="r">about 2% per order on Basic</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">Shopify's own payment system is not available for Indonesian businesses, which is why Midtrans is used and why Shopify adds its transaction fee. On a IDR 1.500.000 Deluxe order, payment fees come to roughly IDR 40.000.</p>
+    <p class="callout">How payments are set up depends on where Suncall Swim's Stripe account and business are registered. If it is registered in a country where Shopify Payments is offered, cards run through Shopify Payments, which is powered by Stripe, with no extra Shopify fee, and QRIS is added through Midtrans or Xendit. If the business is registered in Indonesia, Shopify Payments is not available, and payments run through a local provider instead. We confirm this together in week 1. The price of this proposal is the same either way.</p>
   </section>
 </div>
 
@@ -368,7 +370,7 @@ footer { padding-block: 40px 56px; font-size: .85rem; color: var(--muted); borde
       <div style="display:grid;gap:16px;align-content:start">
         <h2>What I need from you</h2>
         <ul class="check">
-          <li>Business documents for Midtrans (NIB or KTP, bank account)</li>
+          <li>Where your Stripe account and business are registered, plus documents for the Indonesian payment provider (NIB or KTP, bank account)</li>
           <li>Logo files and any brand fonts</li>
           <li>Photos of every shape in every fabric, following my photo guide</li>
           <li>Final price list: packages, a la carte pieces, extra accessories</li>
