@@ -56,6 +56,15 @@
         ],
         "createdAt": "2026-11-20T02:50:35.546Z",
         "reason": "user confirmed: approved the proposed Sand #FBF9F4 ground (from the client's light mockup) before the Figma build"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "proposal/*.html"
+        ],
+        "createdAt": "2026-11-23T05:28:47.219Z",
+        "reason": "Claude: flagged .band full-bleed wrappers and .tw table containers whose cells carry their own 18px padding"
       }
     ]
   }
