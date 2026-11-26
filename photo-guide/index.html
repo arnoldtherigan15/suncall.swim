@@ -9,316 +9,105 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* Layout: same light editorial column as the proposal; a framing diagram, a shot list table and short do/don't lists. Single light theme by design, to match the proposal. */
+/* Layout: one short light column, same look as the proposal: dates, how to shoot, what to shoot, Google Drive folders. Single light theme by design. */
 :root {
   --bg: #FFFFFF;
   --band: #F7F3EC;
-  --card: #FFFFFF;
   --ink: #2A2621;
   --ink-2: #5E564C;
   --muted: #6F665B;
   --line: #E4DACA;
   --ochre: #7A5C1E;
   --ochre-soft: #F3EAD7;
-  --ok: #3F6B4E;
-  --no: #8A3B2E;
   --display: "Cormorant", "Cormorant Garamond", Georgia, serif;
   --body: "Jost", "Futura", "Avenir Next", system-ui, sans-serif;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 300; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-.wrap { max-width: 920px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
-.band { background: var(--band); }
-h1, h2 { font-family: var(--display); font-weight: 300; margin: 0; text-wrap: balance; line-height: 1.08; }
-h1 { font-size: clamp(2.6rem, 6.5vw, 4.4rem); }
-h2 { font-size: clamp(1.9rem, 4.2vw, 2.7rem); color: var(--ochre); }
-h3 { font-family: var(--body); font-weight: 500; font-size: 1.08rem; margin: 0; line-height: 1.35; }
+.wrap { max-width: 720px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2 { font-family: var(--display); font-weight: 300; margin: 0; line-height: 1.1; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 7vw, 3.4rem); }
+h2 { font-size: 1.9rem; color: var(--ochre); }
 p { margin: 0; }
 b, strong { font-weight: 500; }
-section { padding-block: 60px; display: grid; gap: 24px; }
-.lead { font-size: 1.12rem; max-width: 62ch; color: var(--ink-2); }
-.note { font-size: .92rem; color: var(--muted); }
-.num { font-variant-numeric: tabular-nums; }
-code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .88em; background: var(--ochre-soft); padding: 1px 6px; border-radius: 4px; word-break: break-word; }
-
-.mast { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 24px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+section { padding-block: 32px; border-bottom: 1px solid var(--line); display: grid; gap: 14px; }
+section:last-of-type { border-bottom: 0; }
+.mast { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 24px; border-bottom: 1px solid var(--line); }
 .logo { display: grid; line-height: .86; font-family: var(--display); font-weight: 500; font-size: 20px; letter-spacing: 2px; color: var(--ochre); }
 .mast small { font-size: .85rem; color: var(--muted); }
-.hero { padding-block: 56px 48px; display: grid; gap: 22px; }
-.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 12px; }
-.facts div { padding: 18px 16px 18px 4px; display: grid; gap: 2px; }
-.facts div + div { padding-left: 18px; border-left: 1px solid var(--line); }
-.facts .v { font-family: var(--display); font-size: 1.9rem; line-height: 1.1; }
-.facts .k { font-size: .9rem; color: var(--muted); }
-
-.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 22px 22px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-ul.clean { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+.lead { color: var(--ink-2); }
+ul.clean { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; }
 ul.clean li::marker { color: var(--ochre); }
-
-.diagram { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: center; }
-.diagram svg { width: 100%; height: auto; max-width: 100%; display: block; }
-.diagram figcaption { font-size: .9rem; color: var(--muted); margin-top: 8px; }
-figure { margin: 0; }
-
-.steps { display: grid; gap: 0; border-top: 1px solid var(--line); }
-.step { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; padding-block: 18px; border-bottom: 1px solid var(--line); }
-.step .n { font-family: var(--display); font-size: 1.8rem; line-height: 1; color: var(--ochre); }
-.step div { display: grid; gap: 4px; min-width: 0; }
-
-.tablebox { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--card); }
-table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 560px; }
-th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-th { font-weight: 500; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: var(--band); }
-td.c { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-tr.total td { font-weight: 500; border-bottom: 0; }
-
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font-size: .88rem; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); }
-
-.dodont { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.dodont h3 { display: flex; align-items: center; gap: 8px; }
-.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-.do .dot { background: var(--ok); }
-.dont .dot { background: var(--no); }
-
-.callout { border-left: 3px solid var(--ochre); background: var(--ochre-soft); padding: 18px 20px; border-radius: 0 6px 6px 0; display: grid; gap: 6px; }
-.tree { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85rem; line-height: 1.7; background: var(--band); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; overflow-x: auto; white-space: pre; margin: 0; }
-footer { padding-block: 32px 48px; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
-
-@media (max-width: 720px) {
-  section { padding-block: 44px; }
-  .facts { grid-template-columns: minmax(0, 1fr); }
-  .facts div + div { padding-left: 4px; border-left: 0; border-top: 1px solid var(--line); }
-  .grid2, .dodont, .diagram { grid-template-columns: minmax(0, 1fr); }
-}
+.dates { display: grid; gap: 10px; }
+.date { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 12px; align-items: baseline; background: var(--band); border-radius: 6px; padding: 12px 16px; }
+.date b { font-family: var(--display); font-size: 1.5rem; font-weight: 400; color: var(--ochre); font-variant-numeric: tabular-nums; }
+.tree { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85rem; line-height: 1.75; background: var(--band); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; overflow-x: auto; white-space: pre; margin: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .85em; background: var(--ochre-soft); padding: 1px 6px; border-radius: 4px; word-break: break-word; }
+footer { padding-block: 24px 48px; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
 </style>
 
 <div class="wrap">
   <header class="mast">
     <div class="logo" aria-label="Suncall Swim"><span>SUN CALL</span><span>SWIM</span></div>
-    <small>Photo guide · 26 November 2026</small>
+    <small>Photo guide</small>
   </header>
 
-  <div class="hero">
-    <h1>Photo guide for the bikini builder</h1>
-    <p class="lead">The live preview in the builder is made by stacking your product photos on top of each other: a top, a bottom, then the accessories the customer drags into place. For that to look right, every photo has to be taken the same way, from the same spot, in the same light. This guide is for you and your photographer.</p>
-    <div class="facts">
-      <div><span class="v num">±95</span><span class="k">garment photos (every shape in every fabric)</span></div>
-      <div><span class="v num">10 Dec</span><span class="k">Small test batch, so we can check it together</span></div>
-      <div><span class="v num">19 Dec</span><span class="k">All photos and the final price list</span></div>
-    </div>
-  </div>
-</div>
-
-<div class="band">
-  <div class="wrap">
-    <section>
-      <h2>The setup</h2>
-      <p class="lead">Set this up once and leave it in place for the whole shoot. If anything moves between photos, the pieces will not line up in the preview.</p>
-      <div class="diagram">
-        <figure>
-          <svg viewBox="0 0 420 300" role="img" aria-labelledby="dgT">
-            <title id="dgT">Camera frame: the piece is centred on a cross mark with empty margin on every side</title>
-            <rect x="10" y="10" width="400" height="267" rx="4" fill="#ECECEA" stroke="#5E564C" stroke-width="1.5"/>
-            <rect x="60" y="45" width="300" height="197" fill="none" stroke="#7A5C1E" stroke-width="1" stroke-dasharray="5 5"/>
-            <path d="M140 95 Q210 120 280 95 L262 190 Q210 205 158 190 Z" fill="#B9956A" stroke="#2A2621" stroke-width="1"/>
-            <path d="M140 95 L95 75 M280 95 L325 75 M158 190 L120 215 M262 190 L300 215" stroke="#2A2621" stroke-width="1.2" fill="none"/>
-            <path d="M210 135 v16 M202 143 h16" stroke="#8A3B2E" stroke-width="2"/>
-            <path d="M18 18 h18 M18 18 v18 M402 18 h-18 M402 18 v18 M18 269 h18 M18 269 v-18 M402 269 h-18 M402 269 v-18" stroke="#8A3B2E" stroke-width="2" fill="none"/>
-            <text x="210" y="38" text-anchor="middle" font-family="Jost, sans-serif" font-size="11" fill="#7A5C1E">keep the piece inside this area</text>
-            <text x="210" y="294" text-anchor="middle" font-family="Jost, sans-serif" font-size="11" fill="#5E564C">tape marks on the table: corners + centre cross</text>
-          </svg>
-          <figcaption>Seen from the camera. Same frame, same centre, for every single photo.</figcaption>
-        </figure>
-        <div class="steps">
-          <div class="step"><span class="n">1</span><div><h3>Camera straight overhead</h3><p>Pointing straight down at 90°, on a tripod with an overhead arm or a copy stand. A phone is fine if it is locked in a holder and never moved.</p></div></div>
-          <div class="step"><span class="n">2</span><div><h3>Fixed height and zoom</h3><p>Pick one height and one zoom that fit the largest piece (the one-piece), then never change them. Accessories are shot at this same height.</p></div></div>
-          <div class="step"><span class="n">3</span><div><h3>Tape marks on the table</h3><p>Mark the frame corners and a centre cross with tape, so every piece goes in exactly the same place.</p></div></div>
-        </div>
-      </div>
-
-      <div class="grid2">
-        <div class="card">
-          <h3>Background</h3>
-          <ul class="clean">
-            <li>Plain light grey paper or board, matte, no texture or creases.</li>
-            <li>The same background for every photo, garments and accessories.</li>
-            <li>Light grey works for all your fabrics, including Butter Yellow and Khaki, and makes cutting out the pieces clean.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Light</h3>
-          <ul class="clean">
-            <li>Soft, even light with no hard shadows. Two softboxes at 45°, or big window daylight with a diffuser.</li>
-            <li>Room lights off, so colours are not mixed.</li>
-            <li>If shooting by a window, finish in one session. Light changes through the day.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Camera settings (manual)</h3>
-          <ul class="clean">
-            <li>Manual exposure and a fixed white balance. Auto settings change between fabrics.</li>
-            <li>Aperture around f/8 so the whole piece is sharp.</li>
-            <li>Take one photo of a grey card at the start of each session.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Colour check</h3>
-          <ul class="clean">
-            <li>Customers choose by colour, so the photo must match the real fabric.</li>
-            <li>Compare the first shot of each fabric on screen with the fabric in daylight before carrying on.</li>
-            <li>Colour correction is fine. No filters or style edits.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
-
-<div class="wrap">
   <section>
-    <h2>Laying out each piece</h2>
-    <p class="lead">Each shape is laid out the same way in every fabric. The easiest way: style the first fabric carefully, take a phone photo of it as your reference, then copy that layout for every other fabric.</p>
-    <div class="grid2">
-      <div class="card">
-        <h3>Every piece</h3>
-        <ul class="clean">
-          <li>One size for everything. Size M is best.</li>
-          <li>Steamed, no creases, lint or loose threads.</li>
-          <li>No labels, tags, hangers, pins or hands in the shot.</li>
-          <li>Centred on the cross, inside the frame area.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Tops, bottoms and one-piece</h3>
-        <ul class="clean">
-          <li>Top and bottom are photographed separately, never together. The builder combines them.</li>
-          <li>Strings laid out in the same position and length for every fabric, flat and symmetrical.</li>
-          <li>Plain strings, no accessories, beads or charms on them. Those are added in the builder.</li>
-          <li>One-piece: same idea, centred, in each of its fabrics.</li>
-        </ul>
-      </div>
+    <h1>Photo guide</h1>
+    <p class="lead">The bikini builder shows a live preview made from your product photos. To make the pieces line up, every photo needs to be taken the same way. Please share this page with your photographer.</p>
+    <div class="dates">
+      <div class="date"><b>10 Dec</b><span>A few test photos, so I can check them in the builder first</span></div>
+      <div class="date"><b>19 Dec</b><span>All photos and the final price list</span></div>
     </div>
+  </section>
+
+  <section>
+    <h2>How to shoot</h2>
+    <ul class="clean">
+      <li>Lay each piece <b>flat</b> and shoot <b>straight from above</b>, with the camera on a tripod.</li>
+      <li><b>Don't move the camera or change the zoom</b> during the whole shoot.</li>
+      <li>Plain <b>light grey background</b>, soft even light, no shadows.</li>
+      <li>Top and bottom <b>photographed separately</b>. Same size (M) and same layout for every fabric.</li>
+      <li>Plain pieces only: no beads, charms, tags, hands or props.</li>
+      <li>Colours must match the real fabric. No filters, and no cropping.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What to photograph</h2>
+    <ul class="clean">
+      <li><b>Bottoms</b> (Capri, Ivy, Io, Isla, Luma) in each fabric</li>
+      <li><b>Tops</b> (Rosy, Sunny, Daisy, Honey) in each fabric</li>
+      <li><b>One-piece</b> in each of its fabrics</li>
+      <li><b>Fabric swatches</b>: a close-up of each fabric</li>
+      <li><b>String colours</b>: one photo of each</li>
+      <li><b>Accessories</b>: one of each bead, patch, charm, button, ring, rhinestone, and every letter bead. Shot from the same height as the bikinis, so their size matches.</li>
+      <li><i>Optional:</i> lifestyle and model photos for the homepage and Inspo page</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Where to put the photos</h2>
+    <p>Upload everything to <b>one Google Drive folder</b>, using these folders, and send me the link.</p>
+<pre class="tree">Suncall Swim Photos/
+├── 1. Bottoms/
+│   ├── Capri/        capri-leopard.jpg, capri-black.jpg …
+│   ├── Ivy/
+│   └── …
+├── 2. Tops/
+│   ├── Rosy/         rosy-leopard.jpg …
+│   └── …
+├── 3. One-piece/     onepiece-leopard.jpg …
+├── 4. Fabric swatches/
+├── 5. String colours/
+├── 6. Accessories/
+├── 7. Letter beads/
+└── 8. Lifestyle/     (optional)</pre>
+    <p>Name each photo <b>shape-fabric</b>, for example <code>capri-leopard.jpg</code>. Full size JPG, not compressed.</p>
   </section>
 </div>
 
-<div class="band">
-  <div class="wrap">
-    <section>
-      <h2>Shot list</h2>
-      <p class="lead">This is based on your mockup. If a shape is not made in every fabric, simply skip that combination. If a shape or fabric is missing from this list, add it in the same way.</p>
-      <div class="tablebox">
-        <table>
-          <thead><tr><th>What</th><th>Which ones</th><th>How</th><th style="text-align:right">Photos</th></tr></thead>
-          <tbody>
-            <tr><td><b>Bottoms</b></td><td>Capri, Ivy, Io, Isla, Luma × 10 fabrics</td><td>Flat, overhead, one per fabric</td><td class="c">50</td></tr>
-            <tr><td><b>Tops</b></td><td>Rosy, Sunny, Daisy, Honey × 10 fabrics</td><td>Flat, overhead, one per fabric</td><td class="c">40</td></tr>
-            <tr><td><b>One-piece</b></td><td>Leopard, Panthera, Butter Yellow, Brown, Magenta</td><td>Flat, overhead, one per fabric</td><td class="c">5</td></tr>
-            <tr><td><b>Fabric swatches</b></td><td>All 10 fabrics</td><td>A flat piece filling the frame, for the colour circles in the builder</td><td class="c">10</td></tr>
-            <tr><td><b>String colours</b></td><td>Each string colour you offer</td><td>A short length laid straight</td><td class="c">1 each</td></tr>
-            <tr><td><b>Accessories</b></td><td>Each style of bead, patch, charm, stainless piece, button, resin ring, rhinestone</td><td>See below</td><td class="c">1 each</td></tr>
-            <tr><td><b>Letter beads</b></td><td>Every letter you have in stock</td><td>One photo per letter</td><td class="c">1 each</td></tr>
-            <tr class="total"><td>Garments in total</td><td></td><td></td><td class="c">±95</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="grid2">
-        <div class="card">
-          <h3>Fabrics</h3>
-          <div class="chips">
-            <span class="chip">Panthera</span><span class="chip">Seablue</span><span class="chip">Black</span><span class="chip">Purple</span><span class="chip">Taupe</span><span class="chip">Leopard</span><span class="chip">Butter Yellow</span><span class="chip">Brown</span><span class="chip">Magenta</span><span class="chip">Khaki</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Accessories</h3>
-          <ul class="clean">
-            <li><b>Same camera height as the bikinis.</b> This keeps every charm and bead at its true size next to the bikini in the preview.</li>
-            <li>One of each style. Several in one photo is fine if they have at least 2 cm of space between them.</li>
-            <li>Front side up, as they will sit on the bikini.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
-
 <div class="wrap">
-  <section>
-    <h2>Do and don't</h2>
-    <div class="dodont">
-      <div class="card do">
-        <h3><span class="dot" aria-hidden="true"></span>Do</h3>
-        <ul class="clean">
-          <li>Keep the camera, height, zoom and light fixed all shoot</li>
-          <li>Use the same size (M) and the same layout for each shape</li>
-          <li>Check colours against the real fabric</li>
-          <li>Leave empty space around the piece</li>
-          <li>Send the full, uncropped photos</li>
-        </ul>
-      </div>
-      <div class="card dont">
-        <h3><span class="dot" aria-hidden="true"></span>Don't</h3>
-        <ul class="clean">
-          <li>Move the tripod or zoom between photos</li>
-          <li>Use auto white balance or auto exposure</li>
-          <li>Shoot at an angle, on a model or a mannequin</li>
-          <li>Add props, shadows, filters or backgrounds</li>
-          <li>Crop or remove the background yourself. I do that.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid2">
-      <div class="card">
-        <h3>Optional: lifestyle photos</h3>
-        <p>These are separate from the builder shots and can be taken any way you like. They are used on the homepage, the Inspo gallery, the packages and the private event page.</p>
-        <ul class="clean">
-          <li>Model shots, beach, details, a private session in the store</li>
-          <li>Some portrait (4:5) and some landscape (3:2)</li>
-          <li>A few with empty space on one side for text</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Files</h3>
-        <ul class="clean">
-          <li>JPG at full size, at least 3000 px on the long side. RAW files too if the photographer has them.</li>
-          <li>Name each file by what it shows: <code>bottom-capri-leopard.jpg</code>, <code>top-rosy-seablue.jpg</code>, <code>onepiece-magenta.jpg</code>, <code>swatch-khaki.jpg</code>, <code>charm-shell.jpg</code>, <code>letter-a.jpg</code></li>
-          <li>Shared in one Google Drive folder.</li>
-        </ul>
-      </div>
-    </div>
-
-<pre class="tree">Suncall Swim photos/
-├── bottoms/      bottom-capri-leopard.jpg …
-├── tops/         top-rosy-leopard.jpg …
-├── one-piece/    onepiece-leopard.jpg …
-├── swatches/     swatch-leopard.jpg …
-├── strings/      string-black.jpg …
-├── accessories/  charm-shell.jpg, patch-star.jpg …
-├── letters/      letter-a.jpg …
-└── lifestyle/    (optional)</pre>
-  </section>
-</div>
-
-<div class="band">
-  <div class="wrap">
-    <section>
-      <h2>Test batch first</h2>
-      <div class="callout">
-        <p><b>Before the full shoot, please send these by 10 December:</b></p>
-        <ul class="clean">
-          <li>Bottom Capri in Leopard and in Butter Yellow</li>
-          <li>Top Rosy in Leopard and in Butter Yellow</li>
-          <li>3 accessories (a charm, a patch, a bead)</li>
-        </ul>
-        <p>I will put them into the builder and reply within one working day. Then we know the setup works before your photographer shoots all 95 pieces. The full set and the price list are due on <b>19 December</b>.</p>
-      </div>
-    </section>
-  </div>
-</div>
-
-<div class="wrap">
-  <footer>Prepared by Arnold for Suncall Swim. Questions about the setup? Your photographer can message me directly.</footer>
+  <footer>Questions about the photos? Your photographer can message me directly. Arnold Therigan, +62 812-1457-4782</footer>
 </div>
