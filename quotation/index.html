@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quotation Q-SCS-2026-001</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: same light editorial column as the proposal and invoice; header, scope cards, timeline rows, price table, terms. Single light theme by design. */
+:root {
+  --bg: #FFFFFF;
+  --band: #F7F3EC;
+  --card: #FFFFFF;
+  --ink: #2A2621;
+  --ink-2: #5E564C;
+  --muted: #6F665B;
+  --line: #E4DACA;
+  --ochre: #7A5C1E;
+  --ochre-soft: #F3EAD7;
+  --display: "Cormorant", "Cormorant Garamond", Georgia, serif;
+  --body: "Jost", "Futura", "Avenir Next", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 300; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 900px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.band { background: var(--band); }
+h1, h2 { font-family: var(--display); font-weight: 300; margin: 0; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--ochre); }
+h3 { font-family: var(--body); font-weight: 500; font-size: 1.05rem; margin: 0; line-height: 1.35; }
+p { margin: 0; }
+b, strong { font-weight: 500; }
+a { color: var(--ochre); }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; }
+.num { font-variant-numeric: tabular-nums; }
+.label { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+.muted { color: var(--muted); }
+.lead { font-size: 1.08rem; color: var(--ink-2); max-width: 62ch; }
+.note { font-size: .9rem; color: var(--muted); }
+section { padding-block: 48px; display: grid; gap: 22px; }
+
+.mast { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 24px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.logo { display: grid; line-height: .86; font-family: var(--display); font-weight: 500; font-size: 20px; letter-spacing: 2px; color: var(--ochre); }
+
+.head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+.head .t { display: grid; gap: 10px; min-width: 0; }
+dl.kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 18px; margin: 0; font-size: .95rem; }
+dl.kv dt { color: var(--muted); }
+dl.kv dd { margin: 0; }
+
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.facts div { padding: 18px 16px 18px 4px; display: grid; gap: 2px; }
+.facts div + div { padding-left: 18px; border-left: 1px solid var(--line); }
+.facts .v { font-family: var(--display); font-size: 1.9rem; line-height: 1.1; }
+.facts .k { font-size: .9rem; color: var(--muted); }
+
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+ul.clean { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+ul.clean li::marker { color: var(--ochre); }
+
+.rows { display: grid; border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 16px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.row .when { display: grid; gap: 2px; align-content: start; }
+.row .when b { font-size: .95rem; }
+.row .when span { font-size: .88rem; color: var(--muted); }
+.row > div:last-child { display: grid; gap: 4px; min-width: 0; }
+.row.break { color: var(--muted); }
+.row.key { background: var(--ochre-soft); padding-inline: 12px; }
+
+.tablebox { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--card); }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th { text-align: left; font-weight: 400; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--band); }
+td { padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+.r { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+td .sub { font-size: .88rem; color: var(--muted); margin-top: 4px; }
+tr.total td { font-weight: 500; background: var(--band); }
+
+.cta { background: var(--ink); color: var(--bg); border-radius: 6px; padding: 26px; display: grid; gap: 14px; }
+.cta h2 { color: var(--bg); }
+.cta p { color: #DDD3C2; max-width: 60ch; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-block; text-decoration: none; border-radius: 999px; padding: 10px 20px; font-weight: 400; font-size: .95rem; }
+.btn.main { background: var(--ochre-soft); color: var(--ink); }
+.btn.ghost { border: 1px solid #6F665B; color: var(--bg); }
+footer { padding-block: 28px 48px; border-top: 1px solid var(--line); font-size: .88rem; color: var(--muted); }
+
+@media (max-width: 700px) {
+  section { padding-block: 36px; }
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .facts div + div { padding-left: 4px; border-left: 0; border-top: 1px solid var(--line); }
+  .grid2 { grid-template-columns: minmax(0, 1fr); }
+  .row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="logo" aria-label="Suncall Swim"><span>SUN CALL</span><span>SWIM</span></div>
+    <span class="label">Quotation</span>
+  </header>
+
+  <section>
+    <div class="head">
+      <div class="t">
+        <h1>Suncall Swim online store</h1>
+        <p class="lead">The simpler option you chose on 26 November, with the scope, timeline and payments in one place.</p>
+      </div>
+      <dl class="kv num">
+        <dt>Quotation no.</dt><dd><b>Q-SCS-2026-001</b></dd>
+        <dt>Date</dt><dd>26 November 2026</dd>
+        <dt>Prepared for</dt><dd>Kalani, Suncall Swim</dd>
+        <dt>Prepared by</dt><dd>Arnold Therigan</dd>
+      </dl>
+    </div>
+    <div class="facts">
+      <div><span class="v num">IDR 28.000.000</span><span class="k">Fixed net price</span></div>
+      <div><span class="v num">1 Dec</span><span class="k">Start, once the deposit is received</span></div>
+      <div><span class="v num">26–30 Jan</span><span class="k">Launch on your domain</span></div>
+    </div>
+  </section>
+</div>
+
+<div class="band">
+  <div class="wrap">
+    <section>
+      <h2>What you get</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3>Design-your-own bikini, with checkout</h3>
+          <ul class="clean">
+            <li>Deluxe, Premium or a la carte</li>
+            <li>Bottoms (Capri, Ivy, Io, Isla, Luma), tops (Rosy, Sunny, Daisy, Honey) or one-piece, sizes S to XL</li>
+            <li>All your fabrics, and you can add new ones yourself</li>
+            <li>Ways to wear the top, then beads, letter beads, patches, string colours, charms, stainless pieces, buttons, resin rings and rhinestones</li>
+            <li>Drag beads, patches and rhinestones into place. Charms, stainless pieces and buttons sit in their set places</li>
+            <li>Live preview and a running price, with package allowances counted for you</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Stock, orders and customers</h3>
+          <ul class="clean">
+            <li>Stock number for each fabric and countable accessory, going down with every paid order</li>
+            <li>Sold-out fabrics and accessories disappear from the builder, with a low-stock email</li>
+            <li>Every order arrives with the full spec and a placement picture, ready to print for production</li>
+            <li>Order history, Excel export, refunds and discount codes</li>
+            <li>Customer accounts with past orders</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Pages</h3>
+          <ul class="clean">
+            <li>Home, Design your own bikini, Inspo gallery, Packages, Accessories</li>
+            <li>Private Event page with a button that opens WhatsApp with a ready-made message</li>
+            <li>Wholesale enquiry</li>
+            <li>Cart, checkout and customer account</li>
+            <li>Size guide, shipping, returns and contact</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Payments and messages</h3>
+          <ul class="clean">
+            <li>Card payments (Visa, Mastercard, Apple Pay) through your Stripe</li>
+            <li>Automatic order emails from Shopify: confirmation and shipping</li>
+            <li>WhatsApp chat button, and you can message any customer yourself from the order page</li>
+            <li>Shipping rates and email set up</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">Not in this option: online booking for private sessions, QRIS, bank transfer and e-wallets, and automatic WhatsApp messages. Each can be added later as a separate small project.</p>
+    </section>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <h2>Timeline</h2>
+    <p class="lead">Seven working weeks from the deposit, with a break over Christmas and New Year.</p>
+    <div class="rows">
+      <div class="row"><div class="when"><b>Week 1</b><span>1–5 Dec</span></div><div><h3>Setup</h3><p>Shopify account, Stripe connected, stock add-on tested, shipping set up.</p></div></div>
+      <div class="row"><div class="when"><b>Week 2</b><span>8–12 Dec</span></div><div><h3>Design</h3><p>Final desktop and mobile design based on the prototype. First round of feedback. Photo test batch due on 10 December.</p></div></div>
+      <div class="row key"><div class="when"><b>Week 3</b><span>15–19 Dec</span></div><div><h3>Store pages</h3><p>Home, Inspo, packages, private event, accessories, wholesale. Second round of feedback. <b>All product photos and the final price list due on 19 December.</b></p></div></div>
+      <div class="row break"><div class="when"><b>Break</b><span>22 Dec – 2 Jan</span></div><div><p>Christmas and New Year.</p></div></div>
+      <div class="row"><div class="when"><b>Weeks 4–5</b><span>5–16 Jan</span></div><div><h3>Bikini builder</h3><p>All steps, live preview from your photos, drag-and-drop placement on phone and desktop, package counting, letter beads, stock connection.</p></div></div>
+      <div class="row"><div class="when"><b>Week 6</b><span>19–23 Jan</span></div><div><h3>Catalog and testing</h3><p>All fabrics and accessories entered, order emails and statuses, real test orders on phone and desktop.</p></div></div>
+      <div class="row"><div class="when"><b>Week 7</b><span>26–30 Jan</span></div><div><h3>Launch and training</h3><p>Live on your domain, and a training session with your team.</p></div></div>
+    </div>
+    <p class="note">The builder preview is made from your product photos, so they are the one thing that can move the launch date. Your photographer can follow the <a href="../photo-guide/">photo guide</a>.</p>
+  </section>
+</div>
+
+<div class="band">
+  <div class="wrap">
+    <section>
+      <h2>Price and payments</h2>
+      <div class="tablebox">
+        <table>
+          <thead><tr><th>Item</th><th class="r">IDR</th></tr></thead>
+          <tbody>
+            <tr><td><b>Suncall Swim website</b><p class="sub">Design for desktop and mobile, all pages above, and the bikini builder with live preview, pricing and drag-and-drop placement</p></td><td class="r">20.000.000</td></tr>
+            <tr><td><b>Shopify setup</b><p class="sub">Stock connected to every order, Stripe card payments, shipping and email, entering your launch catalog and preview layers (up to 10 fabrics, 10 shapes and 40 accessories), testing, launch and training</p></td><td class="r">8.000.000</td></tr>
+            <tr class="total"><td>Total, net</td><td class="r">28.000.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tablebox">
+        <table>
+          <thead><tr><th>Payment</th><th>When</th><th class="r">IDR</th></tr></thead>
+          <tbody>
+            <tr><td><b>1. Deposit (40%)</b><p class="sub"><a href="../invoice/">Invoice INV-SCS-2026-001</a></p></td><td>Before week 1, by 30 November</td><td class="r"><b>11.200.000</b></td></tr>
+            <tr><td>2. Design approval (30%)</td><td>When you approve the final design</td><td class="r">8.400.000</td></tr>
+            <tr><td>3. Launch (30%)</td><td>At launch on your domain</td><td class="r">8.400.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">All amounts are net: any bank transfer fees or tax deductions are covered on your side.</p>
+    </section>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <h2>Terms</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Included</h3>
+        <ul class="clean">
+          <li>Two rounds of design feedback (weeks 2 and 3)</li>
+          <li>Training session for your team</li>
+          <li>30 days of free fixes after launch</li>
+          <li>The website, design and content belong to you after the final payment</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Not included</h3>
+        <ul class="clean">
+          <li>Product photography (your photographer)</li>
+          <li>Monthly running costs, paid directly by you: Shopify Basic from USD 39, a stock app USD 10–30, domain around IDR 250.000 a year. About IDR 800.000–1.150.000 a month in total, plus card fees per your Stripe or Shopify rate</li>
+          <li>New features after the design is approved, quoted separately</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <h3>What I need from you</h3>
+      <ul class="clean">
+        <li>Where your Stripe account and business are registered (this decides how card payments are set up)</li>
+        <li>Logo files and any brand fonts</li>
+        <li>Product photos following the photo guide, and the final price list</li>
+        <li>Starting stock for fabrics and accessories</li>
+        <li>WhatsApp number for the chat buttons</li>
+        <li>Shipping regions, production time and return policy</li>
+      </ul>
+    </div>
+
+    <div class="cta">
+      <h2>To get started</h2>
+      <p>Paying the deposit confirms this quotation. Once it is received, we start on 1 December.</p>
+      <div class="btns">
+        <a class="btn main" href="../invoice/">Deposit invoice</a>
+        <a class="btn ghost" href="../photo-guide/">Photo guide</a>
+        <a class="btn ghost" href="../proposal/">Full proposal</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <footer>Quotation Q-SCS-2026-001 · Prepared by Arnold Therigan for Kalani, Suncall Swim · 26 November 2026 · Prices in Indonesian rupiah, net of transfer fees and taxes. Monthly running costs are estimates from each provider and may change.</footer>
+</div>
