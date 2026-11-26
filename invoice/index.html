@@ -1,0 +1,204 @@
+<title>Invoice INV-SCS-2026-001</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: same light editorial column as the proposal; invoice header, parties, line items, amount due, bank details, schedule. Single light theme by design. */
+:root {
+  --bg: #FFFFFF;
+  --band: #F7F3EC;
+  --card: #FFFFFF;
+  --ink: #2A2621;
+  --ink-2: #5E564C;
+  --muted: #6F665B;
+  --line: #E4DACA;
+  --ochre: #7A5C1E;
+  --ochre-soft: #F3EAD7;
+  --display: "Cormorant", "Cormorant Garamond", Georgia, serif;
+  --body: "Jost", "Futura", "Avenir Next", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 300; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 0 56px; }
+h1, h2 { font-family: var(--display); font-weight: 300; margin: 0; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); }
+h2 { font-size: 1.9rem; color: var(--ochre); }
+p { margin: 0; }
+b, strong { font-weight: 500; }
+.num { font-variant-numeric: tabular-nums; }
+.label { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+.muted { color: var(--muted); }
+section { padding-block: 32px; border-bottom: 1px solid var(--line); display: grid; gap: 18px; }
+
+.mast { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 24px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.logo { display: grid; line-height: .86; font-family: var(--display); font-weight: 500; font-size: 20px; letter-spacing: 2px; color: var(--ochre); }
+
+.head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+.head .t { display: grid; gap: 8px; }
+dl.kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 18px; margin: 0; font-size: .95rem; }
+dl.kv dt { color: var(--muted); }
+dl.kv dd { margin: 0; }
+
+.parties { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.parties > div { display: grid; gap: 4px; align-content: start; min-width: 0; }
+
+.tablebox { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th { text-align: left; font-weight: 400; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--line); }
+td { padding: 16px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+td + td, th + th { padding-left: 16px; }
+.r { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+td .sub { font-size: .88rem; color: var(--muted); margin-top: 4px; }
+tr.dim td { color: var(--muted); }
+tr.due td { background: var(--ochre-soft); }
+tr.due td:first-child { padding-left: 12px; }
+tr.due td:last-child { padding-right: 12px; }
+
+.total { display: flex; justify-content: flex-end; }
+.total > div { background: var(--ink); color: var(--bg); border-radius: 6px; padding: 20px 24px; text-align: right; display: grid; gap: 2px; min-width: 0; }
+.total .label { color: #CDBF9F; }
+.total .amt { font-family: var(--display); font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 400; line-height: 1.1; }
+.total small { color: #CDBF9F; font-size: .85rem; }
+
+.bank { background: var(--band); border: 1px solid var(--line); border-radius: 6px; padding: 22px; display: grid; gap: 16px; }
+.bank dl.kv dd { font-weight: 500; }
+.acct { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.acct span { font-size: 1.2rem; letter-spacing: .04em; }
+button.copy { font: inherit; font-size: .82rem; font-weight: 400; color: var(--ochre); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; cursor: pointer; }
+button.copy:hover { border-color: var(--ochre); }
+button.copy:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; }
+.note { font-size: .9rem; color: var(--muted); }
+ul.clean { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: .95rem; }
+ul.clean li::marker { color: var(--ochre); }
+.sign { display: grid; gap: 2px; }
+.sign .name { font-family: var(--display); font-size: 1.6rem; }
+
+@media (max-width: 640px) {
+  .parties { grid-template-columns: minmax(0, 1fr); }
+  .total > div { width: 100%; }
+}
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="logo" aria-label="Suncall Swim"><span>SUN CALL</span><span>SWIM</span></div>
+    <span class="label">Invoice</span>
+  </header>
+
+  <section>
+    <div class="head">
+      <div class="t">
+        <h1>Deposit to start</h1>
+        <p class="muted">Suncall Swim online store · Simpler option</p>
+      </div>
+      <dl class="kv num">
+        <dt>Invoice no.</dt><dd><b>INV-SCS-2026-001</b></dd>
+        <dt>Date</dt><dd>26 November 2026</dd>
+        <dt>Due date</dt><dd><b>30 November 2026</b></dd>
+        <dt>Reference</dt><dd>Proposal of 23 November 2026</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="parties">
+    <div>
+      <span class="label">Bill to</span>
+      <p><b>Suncall Swim</b></p>
+      <p class="muted">Attn. Kalani</p>
+    </div>
+    <div>
+      <span class="label">From</span>
+      <p><b>Arnold Therigan</b></p>
+      <p class="muted">Web developer<br>WhatsApp +62 812-1457-4782</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Description</th><th class="r">Amount</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>
+              <b>Suncall Swim online store on Shopify, simpler option</b>
+              <p class="sub">Bikini builder with live preview, packages and drag-and-drop accessories. Fabric and accessory stock connected to every order. All pages, cart, checkout and customer accounts. Card payments through your Stripe. Private Event page with a WhatsApp button, and automatic order emails from Shopify. Two rounds of design feedback, team training and 30 days of free fixes after launch.</p>
+            </td>
+            <td class="r">IDR 28.000.000</td>
+          </tr>
+          <tr class="due">
+            <td>
+              <b>Payment 1 of 3: deposit (40%)</b>
+              <p class="sub">Due before week 1. Work starts the week after it is received, on 1 December if paid by 30 November.</p>
+            </td>
+            <td class="r"><b>IDR 11.200.000</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="total">
+      <div>
+        <span class="label">Amount due</span>
+        <span class="amt num">IDR 11.200.000</span>
+        <small>by 30 November 2026</small>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Payment details</h2>
+    <div class="bank">
+      <dl class="kv">
+        <dt>Bank</dt><dd>BCA (Bank Central Asia)</dd>
+        <dt>Account no.</dt><dd><div class="acct"><span class="num" id="acct">6042825961</span><button type="button" class="copy" id="copyAcct">Copy</button></div></dd>
+        <dt>Account name</dt><dd>Arnold Therigan</dd>
+        <dt>SWIFT code</dt><dd>CENAIDJA <span class="muted" style="font-weight:300">(for transfers from abroad)</span></dd>
+        <dt>Transfer note</dt><dd>INV-SCS-2026-001</dd>
+      </dl>
+    </div>
+    <p class="note">The price is net. Please cover any bank or transfer fees so that IDR 11.200.000 arrives in full. After transferring, send the proof of transfer by WhatsApp to +62 812-1457-4782.</p>
+  </section>
+
+  <section>
+    <h2>Payment schedule</h2>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Payment</th><th>When</th><th class="r">Amount</th></tr></thead>
+        <tbody>
+          <tr class="due"><td><b>1. Deposit (40%)</b></td><td>Before week 1</td><td class="r"><b>IDR 11.200.000</b></td></tr>
+          <tr class="dim"><td>2. Design approval (30%)</td><td>When you approve the final design</td><td class="r">IDR 8.400.000</td></tr>
+          <tr class="dim"><td>3. Launch (30%)</td><td>At launch on your domain</td><td class="r">IDR 8.400.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="border-bottom:0">
+    <h2>After the deposit</h2>
+    <ul class="clean">
+      <li>Week 1: Shopify account set up, Stripe connected, add-ons tested.</li>
+      <li>The photo guide for your photographer, with a small test batch due on 10 December.</li>
+      <li>Product photos and the final price list are due on 19 December. They are the one thing that can move the launch date.</li>
+      <li>Monthly costs (Shopify, apps, domain) are paid by you directly to each provider and are not part of this invoice.</li>
+    </ul>
+    <div class="sign">
+      <p class="muted">Thank you, I'm looking forward to building Suncall Swim's store.</p>
+      <p class="name">Arnold Therigan</p>
+    </div>
+  </section>
+</div>
+
+<script>
+  document.getElementById('copyAcct').addEventListener('click', function (e) {
+    var btn = e.currentTarget, text = document.getElementById('acct').textContent;
+    var done = function () { btn.textContent = 'Copied'; };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('acct'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected';
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (err) { fallback(); }
+  });
+</script>
